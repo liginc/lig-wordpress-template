@@ -1,15 +1,7 @@
 <?php
-/**
- *  定数:定数はここに全部書いてください
- *  定数名は単語毎「_」区切りで全て大文字にすること
- *  使用方法のコメントを必ず残すこと.
- */
-
-/** TOPページの投稿取得件数 */
-//define("TOP_POST_LIMIT", "999");
 
 $load_release_hash = function () {
-    $map = get_template_directory().'/anticache.json';
+    $map = get_template_directory() . '/anticache.json';
     if (!file_exists($map)) {
         return '';
     }
@@ -20,5 +12,42 @@ $load_release_hash = function () {
 
     return $content->anticache;
 };
-
 define('ANTICACHE_HASH', $load_release_hash());
+
+/**
+ * General Setting
+ */
+define('HOME_URL', home_url() . '/');
+
+/**
+ * ASSETS
+ */
+define('ASSETS', HOME_URL . 'assets/');
+define('IMAGES', ASSETS . 'images/');
+define('NO_IMAGE', IMAGES . 'noimage.png');
+define('FAVICON', IMAGES . 'favicon.ico');
+define('TOUCH_ICON', IMAGES . 'apple-touch-icon-precomposed.png');
+define('OGP_IMAGE', IMAGES . 'ogp.png');
+define('JS', ASSETS . 'js/');
+define('CSS', ASSETS . 'css/');
+define('SVG', ASSETS . 'svg/');
+
+/**
+ * CONTENTS
+ */
+/*
+define('ABOUT', HOME_URL . 'about/');
+define('SERVICE', HOME_URL . 'service/');
+define('CONTACT', HOME_URL . 'contact/');
+define('CONFIRM', CONTACT . 'confirm/');
+define('COMPLETE', CONTACT . 'complete/');
+*/
+
+/**
+ * SNS
+ */
+/*
+define('TWITTER', 'https://twitter.com/');
+define('FACEBOOK', 'https://facebook.com/');
+define('INSTAGRAM', 'https://instagram.com/');
+*/
