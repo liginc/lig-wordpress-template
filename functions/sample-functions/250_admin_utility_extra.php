@@ -1,22 +1,6 @@
 <?php
 
-/**
- * 不要なメニューを削除する場合に利用します。
- */
-function lig_wp_remove_menus()
-{
-    remove_menu_page('edit.php');
-    remove_menu_page('upload.php');
-    remove_menu_page('link-manager.php');
-    remove_menu_page('edit-comments.php');
-    remove_menu_page('tools.php');
-    remove_submenu_page('index.php', 'update-core.php'); // 本体更新ページ
-    remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag');
-}
 
-if (!is_super_admin()) { // ※管理者以外のログイン時にフックする場合。
-//	add_action( 'admin_menu', 'lig_wp_remove_menus' );
-}
 
 /**
  * ログイン画面のスタイルシートを変更する場合に利用します。
