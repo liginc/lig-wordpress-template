@@ -1,7 +1,6 @@
 <?php
 /**
- * Theme version
- * style.cssで定義されているバージョン番号を定数化しておきます。
+ * Define theme version
  */
 define('THEME_VERSION', wp_get_theme()->get('Version'));
 
