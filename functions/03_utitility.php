@@ -27,7 +27,7 @@ function get_first_term($post_id, $tax = 'category')
 }
 
 /**
- * Get thumbnail url
+ * Get post thumbnail
  */
 function get_the_eyecatch($post_id = null, $thumbnail = 'full', $noimage = false, $only_url = true)
 {

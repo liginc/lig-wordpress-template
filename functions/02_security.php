@@ -21,3 +21,13 @@ function remove_x_pingback($headers) {
 }
 add_filter(‘wp_headers’, ‘remove_x_pingback’);
 
+
+/**
+ * Disable redirect to wp-login.php
+ */
+remove_action( 'template_redirect', 'wp_redirect_admin_locations', 1000 );
+
+/**
+ * Disable author page
+ */
+add_filter( 'author_rewrite_rules', '__return_empty_array' );
