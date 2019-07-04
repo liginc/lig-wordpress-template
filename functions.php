@@ -10,5 +10,3 @@ define('THEME_VERSION', wp_get_theme()->get('Version'));
 foreach (glob(TEMPLATEPATH . '/functions/*.php') as $file) {
     require_once $file;
 }
-
-require_once(TEMPLATEPATH . 'theme-functions.php');
