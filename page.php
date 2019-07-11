@@ -16,5 +16,5 @@ get_header();
 import_module('common/breadcrumbs');
 the_title();
 the_content();
-import_module('common/pager');
+import_module('common/pagination');
 get_footer();
