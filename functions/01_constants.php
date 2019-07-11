@@ -18,6 +18,7 @@ define('ANTICACHE_HASH', $load_release_hash());
  * General Setting
  */
 define('HOME_URL', home_url() . '/');
+define('SITE_NAME', get_bloginfo('name'));
 
 /**
  * ASSETS
@@ -35,8 +36,8 @@ define('SVG', ASSETS . 'svg/');
 /**
  * CONTENTS
  */
-/*
 define('ABOUT', HOME_URL . 'about/');
+/*
 define('SERVICE', HOME_URL . 'service/');
 define('CONTACT', HOME_URL . 'contact/');
 define('CONFIRM', CONTACT . 'confirm/');
@@ -50,4 +51,11 @@ define('COMPLETE', CONTACT . 'complete/');
 define('TWITTER', 'https://twitter.com/');
 define('FACEBOOK', 'https://facebook.com/');
 define('INSTAGRAM', 'https://instagram.com/');
+*/
+
+/**
+ * EXTERNAL LINKS
+ */
+/*
+define('', '');
 */

@@ -50,3 +50,34 @@ function get_the_eyecatch($post_id = null, $thumbnail = 'full', $noimage = false
         return NO_IMAGE;
     }
 }
+
+/**
+ * Include SVG
+ */
+function get_svg($name)
+{
+    return '<svg class="svg-sprite svg-' . $name . '" role="img"><use xlink:href="' . get_template_directory_uri() . '/assets/svg/sprite.svg#' . $name . '" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg>';
+}
+
+/**
+ * return target="_blank"
+ * $flg Boolean
+ */
+function is_blank($flg) {
+    return ($flg) ? ' target="_blank"' : '';
+}
+
+/**
+ * return ' is-current'
+ * $flg Boolean
+ */
+function is_current($flg) {
+    return ($flg) ? ' is-current' : '';
+}
+
+/**
+ * Attach modifier class
+ */
+function get_modifier_class($class_name,$modifier) {
+    return ( !empty($modifier) ) ? ' '.$class_name.'--'.$modifier : '';
+}

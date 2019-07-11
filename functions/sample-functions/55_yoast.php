@@ -33,3 +33,11 @@ function _set_static_meta($title, $args = array())
     add_filter('wpseo_metakey', $seo_key);
 }
 
+/**
+ * Disable robots
+ */
+function filter_wpseo_robots( $robotsstr ) {
+    return null;
+};
+
+add_filter( 'wpseo_robots', 'filter_wpseo_robots', 10, 1 );

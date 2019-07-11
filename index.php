@@ -1,10 +1,6 @@
 <?php
-get_header(); ?>
-<?php if (have_posts()) : ?>
-  <?php while (have_posts()) : the_post(); ?>
-    <?php the_title(); ?>
-    <?php the_content(); ?>
-  <?php endwhile; ?>
-<?php endif; ?>
-<?php
+get_header();
+import_module('index/mv');
+//import_module('index/recent_news');
+import_module('index/recent_posts');
 get_footer();
