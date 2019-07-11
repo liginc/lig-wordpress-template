@@ -6,7 +6,7 @@
  * $en(string)
  * $modifier(string)
  */
-$modifier = get_modifier_class('index-title', $modifier);
+$modifier = get_modifier_class('index-title', !empty($modifier) ? $modifier : null);
 ?>
 <header class="l-index-title">
     <h2 class="index-title<?= $modifier ?>">

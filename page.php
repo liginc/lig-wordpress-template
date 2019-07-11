@@ -7,7 +7,7 @@ $args = [
                 'title' => SITE_NAME,
             ],
             [
-                'href' => ABOUT,
+                'href' => 'dummy link',
                 'title' => 'ABOUT',
             ],
         ]

@@ -36,8 +36,8 @@ define('SVG', ASSETS . 'svg/');
 /**
  * CONTENTS
  */
-define('ABOUT', HOME_URL . 'about/');
 /*
+define('ABOUT', HOME_URL . 'about/');
 define('SERVICE', HOME_URL . 'service/');
 define('CONTACT', HOME_URL . 'contact/');
 define('CONFIRM', CONTACT . 'confirm/');

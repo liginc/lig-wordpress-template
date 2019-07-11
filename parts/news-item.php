@@ -5,7 +5,7 @@
  * $post(Post Object)
  * $modifier(string)
  */
-$modifier = get_modifier_class('news-item', $modifier);
+$modifier = get_modifier_class('news-item', !empty($modifier) ? $modifier : null);
 
 //get posts categories
 $cats = get_the_terms($post->ID, 'news-category');
@@ -17,7 +17,7 @@ $href = get_permalink($post->ID);
 $title = $post->post_title;
 $date = get_the_date('Y.m.d', $post->ID);
 $datetime = get_the_date('Y-m-d', $post->ID);
-$cat_name = $cat->parent;
+$cat_name = $cat->name;
 ?>
 <article class="news-item<?= $modifier ?>">
     <a class="news-item-link" href="<?= $href ?>" title="<?= $title ?>">

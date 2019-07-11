@@ -20,7 +20,7 @@ if (!$recent_posts->have_posts()) return;
 ?>
 <div class="l-recent-posts">
     <section class="recent-posts">
-        <?php import_part('index/index-posts', $index_title); ?>
+        <?php import_part('index/index-title', $index_title); ?>
         <?php import_part('post-list', $post_list_args); ?>
     </section>
 </div>

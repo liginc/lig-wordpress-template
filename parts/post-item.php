@@ -6,7 +6,7 @@
  * $modifier(string)
  */
 
-$modifier = get_modifier_class('post-item', $modifier);
+$modifier = get_modifier_class('post-item', !empty($modifier) ? $modifier : null);
 
 //get posts categories
 $cats = get_the_terms($post->ID, 'category');
@@ -18,7 +18,7 @@ $href = get_permalink($post->ID);
 $title = $post->post_title;
 $date = get_the_date('Y.m.d', $post->ID);
 $datetime = get_the_date('Y-m-d', $post->ID);
-$cat_name = $cat->parent;
+$cat_name = $cat->name;
 $thumbnail_url = get_the_eyecatch($post->ID);
 ?>
 <article class="post-item<?= $modifier ?>">
