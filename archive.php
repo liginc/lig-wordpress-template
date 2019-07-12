@@ -17,7 +17,7 @@ switch (true) {
     case is_search():
         $title = $queried_object->s;
         $slug = 'search';
-        $permalink = HOME_URL . $_SERVER['REQUEST_URI'];
+        $permalink = HOME_URL . $_SERVER['SCRIPT_NAME'] . '?s=' . $_GET['s'];
         break;
 
 }
