@@ -1,11 +1,11 @@
 <?php
-/**
- * ARGUMENTS
- *
- * $post(Post Object)
- * $modifier(string)
- */
-$modifier = get_modifier_class('news-item', !empty($modifier) ? $modifier : null);
+/*
+-ARGUMENTS
+$post(Post Object)
+$modifier(string)
+
+-USAGE
+*/
 
 //get posts categories
 $cats = get_the_terms($post->ID, 'news-category');
@@ -18,8 +18,9 @@ $title = $post->post_title;
 $date = get_the_date('Y.m.d', $post->ID);
 $datetime = get_the_date('Y-m-d', $post->ID);
 $cat_name = $cat->name;
+$modifier = !empty($modifier) ? $modifier : '';
 ?>
-<article class="news-item<?= $modifier ?>">
+<article class="<?= get_modified_class('news-item', $modifier); ?>">
     <a class="news-item-link" href="<?= $href ?>" title="<?= $title ?>">
         <time class="news-item-date" datetime="<?= $datetime ?>">
             <?= $date ?>

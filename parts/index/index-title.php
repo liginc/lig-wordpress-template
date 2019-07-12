@@ -1,12 +1,13 @@
 <?php
-/**
- * ARGUMENTS
- *
- * $ja(string)
- * $en(string)
- * $modifier(string)
- */
-$modifier = get_modifier_class('index-title', !empty($modifier) ? $modifier : null);
+/*
+-ARGUMENTS
+$ja(string)
+$en(string)
+$modifier(string)
+
+-USAGE
+*/
+$modifier = !empty($modifier) ? $modifier : '';
 ?>
 <header class="l-index-title">
     <h2 class="index-title<?= $modifier ?>">

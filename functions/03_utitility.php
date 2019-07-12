@@ -63,7 +63,8 @@ function get_svg($name)
  * return target="_blank"
  * $flg Boolean
  */
-function is_blank($flg) {
+function is_blank($flg)
+{
     return ($flg) ? ' target="_blank"' : '';
 }
 
@@ -71,13 +72,15 @@ function is_blank($flg) {
  * return ' is-current'
  * $flg Boolean
  */
-function is_current($flg) {
+function is_current($flg)
+{
     return ($flg) ? ' is-current' : '';
 }
 
 /**
  * Attach modifier class
  */
-function get_modifier_class($class_name,$modifier) {
-    return ( !empty($modifier) ) ? ' '.$class_name.'--'.$modifier : '';
+function get_modified_class($class_name, $modifier)
+{
+    return (!empty($modifier)) ? $class_name . ' ' . $class_name . '--' . $modifier : $class_name;
 }

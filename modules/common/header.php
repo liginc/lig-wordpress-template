@@ -1,29 +1,31 @@
 <?php
-/**
- * SAMPLE
- *
- * $menu = [
- * [
- * 'title' => 'TOP',
- * 'href' => HOME_URL,
- * 'current' => is_front_page()
- * ],
- * [
- * 'title' => 'ABOUT',
- * 'href' => ABOUT,
- * 'current' => is_page('about')
- * ],
- * [
- * 'title' => 'NEWS',
- * 'href' => NEWS,
- * 'current' => is_post_type_archive('news')
- * ],
- * [
- * 'title' => 'EXTERNAL LINK',
- * 'href' => EXTERNAL_LINK,
- * 'blank' => true,
- * ],
- * ];
+/*
+
+USAGE
+
+$menu = [
+    [
+        'title' => 'TOP',
+        'href' => HOME_URL,
+        'current' => is_front_page()
+    ],
+    [
+        'title' => 'ABOUT',
+        'href' => ABOUT,
+        'current' => is_page('about')
+    ],
+    [
+        'title' => 'NEWS',
+        'href' => NEWS,
+        'current' => is_post_type_archive('news')
+    ],
+    [
+        'title' => 'EXTERNAL LINK',
+        'href' => EXTERNAL_LINK,
+        'blank' => true,
+    ],
+];
+
  */
 $menu = [];
 

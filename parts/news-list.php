@@ -1,10 +1,13 @@
 <?php
-/**
- * ARGUMENTS
- * $news(WP_Query Object)
- * $modifier(string)
- */
-$modifier = get_modifier_class('news-list', !empty($modifier) ? $modifier : null);
+/*
+-ARGUMENTS
+$news(WP_Query Object)
+$modifier(string)
+
+-USAGE
+
+*/
+$modifier = !empty($modifier) ? $modifier : '';
 ?>
 <div class="l-news-list">
     <div class="news-list<?= $modifier ?>">

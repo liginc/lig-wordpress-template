@@ -1,12 +1,13 @@
 <?php
-/**
- * ARGUMENTS
- *
- * $href(string)
- * $title(string)
- * $current(boolean)
- * $blank(boolean)
- */
+/*
+-ARGUMENTS
+$href(string)
+$title(string)
+$current(boolean)
+$blank(boolean)
+
+-USAGE
+*/
 $current = is_current($current);
 $blank = is_blank($blank);
 ?>

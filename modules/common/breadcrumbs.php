@@ -5,32 +5,31 @@
 
 /*
 
-$args = [
-    'breadcrumbs' =>
-        [
-            [
-                'href' => '',
-                'title' => '',
-            ],
-            [
-                'href' => '',
-                'title' => '',
-            ],
-        ]
+USAGE
+
+$breadcrumbs = [
+    [
+        'href' => HOME_URL,
+        'title' => SITE_NAME,
+    ],
+    [
+        'href' => 'dummy link',
+        'title' => 'DUMMY',
+    ],
 ];
 
-import_part('/common/breadcrumbs',$args);
+import_module('common/breadcrumbs',['breadcrumbs' => $breadcrumbs]);
 
 */
 
-$items_count = count($breadcrumbs) - 1;
+$items_count = count($breadcrumbs);
 ?>
 <div class="l-breadcrumbs">
     <nav class="breadcrumbs">
         <ol class="breadcrumbs-list">
             <?php
             foreach ($breadcrumbs as $i => $item) :
-                $last = ($i === $items_count) ? true : false;
+                $last = ($i + 1 === $items_count) ? true : false;
                 ?>
                 <li class="breadcrumbs-item<?= ($last) ? ' breadcrumbs-item--last' : '' ?>">
                     <a class="breadcrumbs-link" href="<?= $item['href'] ?>" title="<?= $item['title'] ?>">
