@@ -1,4 +1,10 @@
 <?php
+/*
+-MODULE:PAGE NAVIGATION
+
+-USAGE
+import_part('/common/page-navigation');
+*/
 $prev_post = get_previous_post();
 $next_post = get_next_post();
 

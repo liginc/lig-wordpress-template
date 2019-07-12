@@ -1,14 +1,10 @@
 <?php
-/**
- * PAGINATION
- */
-
 /*
+-MODULE:PAGINATION
 
+-USAGE
 import_part('/common/pagination');
-
 */
-
 global $paged, $wp_query;
 
 //max page
@@ -19,7 +15,7 @@ $paged = (empty($paged)) ? 1 : (int)$paged;
 
 /**
  * !!! ONLY DEVELOPING !!!
- * Dummy values.
+ * Dummy variables.
  * $paged, $pages
  */
 $paged = 5;

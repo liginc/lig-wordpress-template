@@ -1,8 +1,11 @@
 <?php
 /*
+-MODULE:HEADER
 
-USAGE
+-USAGE
+import_part('/common/header');
 
+-SAMPLE VARIABLES
 $menu = [
     [
         'title' => 'TOP',
@@ -25,7 +28,6 @@ $menu = [
         'blank' => true,
     ],
 ];
-
  */
 $menu = [];
 

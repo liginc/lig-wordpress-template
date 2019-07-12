@@ -1,12 +1,8 @@
 <?php
-/**
- * BREADCRUMB LIST
- */
-
 /*
+-MODULE:BREADCRUMB LIST
 
-USAGE
-
+-USAGE
 $breadcrumbs = [
     [
         'href' => HOME_URL,
@@ -17,9 +13,7 @@ $breadcrumbs = [
         'title' => 'DUMMY',
     ],
 ];
-
 import_module('common/breadcrumbs',['breadcrumbs' => $breadcrumbs]);
-
 */
 
 $items_count = count($breadcrumbs);
