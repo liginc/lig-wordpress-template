@@ -2,6 +2,7 @@
 /*
 -ARGUMENTS
 $post(Post Object)
+$taxonomy(string)
 $modifier(string)
 
 -USAGE
