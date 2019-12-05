@@ -8,7 +8,7 @@ function redirect_404()
 {
     global $wp_query;
     switch (true) {
-        #case is_post_type_archive('post_type_na,e'):
+        #case is_post_type_archive('post_type_name'):
         #case is_tax('tax_name'):
         #case is_category():
         #case is_tag():
