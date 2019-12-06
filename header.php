@@ -12,11 +12,3 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-<div class="l-header">
-    <?php import_module('common/header'); ?>
-</div>
-
-<main class="main" role="main">
-    <div class="l-content">
-        <div class="content">
