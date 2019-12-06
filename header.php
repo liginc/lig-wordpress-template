@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="<?php echo resolve_asset_url('/images/favicon.ico'); ?>">
     <link rel="apple-touch-icon-precomposed"
           href="<?php echo resolve_asset_url('/images/apple-touch-icon-precomposed.png'); ?>">
-    <link rel="stylesheet" href="<?php echo resolve_asset_url('/css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo resolve_asset_url('/css/app.css'); ?>">
     <?php wp_head(); ?>
 </head>
 
