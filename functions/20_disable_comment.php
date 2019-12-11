@@ -11,8 +11,6 @@ function remove_comment_rewrite_rule()
     return $wp_rewrite;
 }
 
-;
-
 add_filter('rewrite_rules_array', 'delete_comment_rewrite_rules');
 function delete_comment_rewrite_rules($rules)
 {
