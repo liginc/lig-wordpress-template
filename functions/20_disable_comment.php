@@ -15,11 +15,11 @@ add_filter('rewrite_rules_array', 'delete_comment_rewrite_rules');
 function delete_comment_rewrite_rules($rules)
 {
     foreach ([
-                 'feed/(feed|rdf|rss|rss2|atom)/?$',
-                 '(feed|rdf|rss|rss2|atom)/?$',
-                 'embed/?$',
-                 'page/?([0-9]{1,})/?$'
-             ] as $rule) unset($rules[$rule]);
+                 'comments/feed/(feed|rdf|rss|rss2|atom)/?$',
+                 'comments/(feed|rdf|rss|rss2|atom)/?$',
+                 'comments/embed/?$',
+                 'comments/page/?([0-9]{1,})/?$'
+             ] as $rule) if (!empty($rules[$rule])) unset($rules[$rule]);
     return $rules;
 }
 
