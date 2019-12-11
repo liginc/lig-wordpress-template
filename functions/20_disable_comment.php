@@ -24,3 +24,9 @@ function delete_comment_rewrite_rules($rules)
              ] as $rule) unset($rules[$rule]);
     return $rules;
 }
+
+add_action('admin_menu', 'hide_comment_menus');
+function hide_comment_menus()
+{
+    remove_menu_page('edit-comments.php');
+}
