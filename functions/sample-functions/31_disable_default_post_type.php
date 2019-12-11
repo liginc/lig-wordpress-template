@@ -18,7 +18,6 @@ function remove_default_post_type()
     return $wp_rewrite;
 }
 
-
 add_filter('rewrite_rules_array', 'delete_default_post_type_rewrite_rules');
 function delete_default_post_type_rewrite_rules($rules)
 {
@@ -29,10 +28,9 @@ function delete_default_post_type_rewrite_rules($rules)
                  '[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$',
                  '[^/]+/([^/]+)/-([0-9]{1,})/?$',
                  '[^/]+/([^/]+)/embed/?$'
-             ] as $rule) unset($rules[$rule]);
+             ] as $rule) if (!empty($rules[$rule])) unset($rules[$rule]);
     return $rules;
 }
-
 
 add_action('template_redirect', 'redirect_default_post_type_404');
 function redirect_default_post_type_404()
@@ -51,7 +49,6 @@ function redirect_default_post_type_404()
 
 
 add_action('admin_menu', 'hide_default_post_type_menus');
-
 function hide_default_post_type_menus()
 {
     remove_menu_page('edit.php');
