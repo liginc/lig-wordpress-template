@@ -14,4 +14,11 @@ if (defined('WPSEO_FILE')) {
         return null;
     }
     //add_filter('wpseo_robots', 'filter_wpseo_robots', 10, 1);
+
+    /**
+     * Disable Yoast's Comment
+     */
+    add_action('wp_head',function() { ob_start(function($o) {
+        return preg_replace('/^\n?<!--.*?[Y]oast.*?-->\n?$/mi','',$o);
+    }); },~PHP_INT_MAX);
 }
