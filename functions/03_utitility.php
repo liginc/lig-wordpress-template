@@ -28,7 +28,7 @@ function get_first_term($post_id, $tax = 'category')
 
 /**
  * Get post thumbnail
- * ( If don't use content image `add_filter( 'thumbnail_use_content_image', '__return_false' );` )
+ * ( If don't use content image `add_filter( 'eyecatch_use_content_image', '__return_false' );` )
  */
 function get_the_eyecatch($post_id = null, $size = 'large', $noimage = false, $only_url = true)
 {
@@ -44,7 +44,7 @@ function get_the_eyecatch($post_id = null, $size = 'large', $noimage = false, $o
         }
     }
 
-    $use_content_image = apply_filters( 'thumbnail_use_content_image', true );
+    $use_content_image = apply_filters( 'eyecatch_use_content_image', true );
 
     if (has_post_thumbnail($post_id)) {
         return ($only_url) ? wp_get_attachment_image_url(get_post_thumbnail_id($post_id), $size, true) : wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $size, true);
