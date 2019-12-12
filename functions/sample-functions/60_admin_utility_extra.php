@@ -41,20 +41,6 @@ function lig_wp_replace_hello_text($wp_admin_bar)
 //add_filter( 'admin_bar_menu', 'lig_wp_replace_hello_text', 25 );
 
 /**
- * WordPressSEOプラグインのメニュー非表示.
- */
-function lig_wp_remove_wordpress_seo_menu()
-{
-    echo '<style type="text/css">';
-    echo '#toplevel_page_wpseo_dashboard,#wp-admin-bar-view,#wp-admin-bar-wpseo-menu {';
-    echo '  display: none;';
-    echo '}';
-    echo '</style>';
-}
-
-//add_action( 'admin_head', 'lig_wp_remove_wordpress_seo_menu', 100);
-
-/**
  * adminbarを表示させない.
  *
  * @memo adminbarを表示させるとスタイルが崩れることがある

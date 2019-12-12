@@ -96,3 +96,17 @@ function get_modified_class($class_name, $modifier)
 {
     return (!empty($modifier)) ? $class_name . ' ' . $class_name . '--' . $modifier : $class_name;
 }
+
+/**
+ * 対象の記事の最初のtermを取得します.
+ */
+function get_primary_term($post_id, $tax = 'category')
+{
+    $terms = get_the_terms($post_id, $tax);
+
+    if (!empty($terms[0])) {
+        return $terms[0];
+    } else {
+        return array();
+    }
+}
