@@ -102,6 +102,14 @@ function disable_font_size_changer()
 }
 
 /**
+ * Gutenbergのcss読み込み無効化
+ */
+add_action( 'wp_enqueue_scripts', 'disable_block_style', 9999);
+function disable_block_style() {
+    wp_dequeue_style('wp-block-library');
+}
+
+/**
  * エディタにスタイルを適用
  */
 //add_action( 'after_setup_theme', 'custom_gutenberg_style' );
