@@ -27,3 +27,22 @@ EOF;
 
     return $content;
 }
+
+//add_filter('get_the_eyecatch','dummy_eyecatch',10,4);
+function dummy_eyecatch($null, $post_id = null, $size = 'large', $noimage = true) {
+    switch ($size) {
+        case 'full':
+            $d_size = '1600/1200';
+            break;
+        case 'large':
+            $d_size = '1280/860';
+            break;
+        case 'medium':
+            $d_size = '750/562';
+            break;
+        case 'thumbnail':
+            $d_size = '160/160';
+            break;
+    }
+    return 'http://placeimg.com/'.$d_size.'/nature?rand='.rand(1,36);
+}
