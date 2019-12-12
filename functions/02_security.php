@@ -31,3 +31,8 @@ remove_action( 'template_redirect', 'wp_redirect_admin_locations', 1000 );
  * Disable author page
  */
 add_filter( 'author_rewrite_rules', '__return_empty_array' );
+
+/**
+ * Disable REST API link in HTTP headers
+ */
+remove_action('template_redirect', 'rest_output_link_header', 11, 0);
