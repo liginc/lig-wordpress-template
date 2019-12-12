@@ -28,8 +28,9 @@ function get_first_term($post_id, $tax = 'category')
 
 /**
  * Get post thumbnail
+ * ( If don't use content image `add_filter( 'thumbnail_use_content_image', '__return_false' );` )
  */
-function get_the_eyecatch($post_id = null, $thumbnail = 'full', $noimage = false, $only_url = true)
+function get_the_eyecatch($post_id = null, $size = 'large', $noimage = false, $only_url = true)
 {
     if (is_null($post_id)) {
         if (!empty($GLOBALS['post'])) {
@@ -42,12 +43,24 @@ function get_the_eyecatch($post_id = null, $thumbnail = 'full', $noimage = false
             }
         }
     }
+
+    $use_content_image = apply_filters( 'thumbnail_use_content_image', true );
+
     if (has_post_thumbnail($post_id)) {
-        return ($only_url) ? wp_get_attachment_image_url(get_post_thumbnail_id($post_id), $thumbnail, true) : wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $thumbnail, true);
-    } elseif (!$noimage) {
-        return false;
-    } else {
+        return ($only_url) ? wp_get_attachment_image_url(get_post_thumbnail_id($post_id), $size, true) : wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $size, true);
+    } elseif ( $use_content_image && $content = parse_blocks(get_post($post_id)->post_content)) {
+        foreach ($content as $block) {
+            if ($block["blockName"] === "core/image") {
+                if (preg_match('/src="(.+?)"/', $block["innerHTML"], $match)) {
+                    return $match[1];
+                }
+            }
+        }
+    }
+    if ($noimage) {
         return NO_IMAGE;
+    } else {
+        return false;
     }
 }
 
