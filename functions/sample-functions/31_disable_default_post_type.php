@@ -1,7 +1,7 @@
 <?php
 
-add_action('init', 'remove_default_post_type', 99);
-function remove_default_post_type()
+add_action('init', 'remove_default_taxonomy', 99);
+function remove_default_taxonomy()
 {
     global $wp_rewrite;
     unset($wp_rewrite->extra_permastructs["category"]);
