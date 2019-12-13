@@ -1,16 +1,13 @@
 <?php
 
 add_action('init', 'remove_default_post_type', 99);
-
 function remove_default_post_type()
 {
     global $wp_rewrite;
     unset($wp_rewrite->extra_permastructs["category"]);
     unset($wp_rewrite->extra_permastructs["post_tag"]);
-    unset($wp_rewrite->queryreplace[array_keys($wp_rewrite->queryreplace, 'p=')[0]]);
     unset($wp_rewrite->queryreplace[array_keys($wp_rewrite->queryreplace, 'category_name=')[0]]);
     unset($wp_rewrite->queryreplace[array_keys($wp_rewrite->queryreplace, 'tag=')[0]]);
-    unset($wp_rewrite->rewritecode[array_keys($wp_rewrite->rewritecode, '%post_id%')[0]]);
     unset($wp_rewrite->rewritecode[array_keys($wp_rewrite->rewritecode, '%category%')[0]]);
     unset($wp_rewrite->rewritecode[array_keys($wp_rewrite->rewritecode, '%post_tag%')[0]]);
     unregister_taxonomy_for_object_type('category', 'post');
@@ -22,12 +19,11 @@ add_filter('rewrite_rules_array', 'delete_default_post_type_rewrite_rules');
 function delete_default_post_type_rewrite_rules($rules)
 {
     foreach ([
-                 '[^/]+/([^/]+)/?$',
-                 '[^/]+/([^/]+)/trackback/?$',
-                 '[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$',
-                 '[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$',
-                 '[^/]+/([^/]+)/-([0-9]{1,})/?$',
-                 '[^/]+/([^/]+)/embed/?$'
+                 '([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$',
+                 '([^/]+)/(feed|rdf|rss|rss2|atom)/?$',
+                 '([^/]+)/page/?([0-9]{1,})/?$',
+                 '([^/]+)/-([0-9]{1,})/?$',
+                 '([^/]+)(?:/([0-9]+))?/?$'
              ] as $rule) if (!empty($rules[$rule])) unset($rules[$rule]);
     return $rules;
 }
