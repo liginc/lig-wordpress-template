@@ -3,8 +3,8 @@ if (!function_exists('mix')) {
     /**
      * Get the path to a versioned Mix file.
      *
-     * @param  string  $path
-     * @param  string  $manifestDirectory
+     * @param  string $path
+     * @param  string $manifestDirectory
      * @return string
      * @throws Exception
      */
@@ -13,8 +13,8 @@ if (!function_exists('mix')) {
         static $manifests = [];
         // https://github.com/illuminate/support/blob/49110cc355532fb5f421ab996bb67669f35dc9ab/Str.php#L486
         $startsWith = function ($haystack, $needles) {
-            foreach ((array) $needles as $n) {
-                if ($n !== '' && substr($haystack, 0, strlen($n)) === (string) $n) {
+            foreach ((array)$needles as $n) {
+                if ($n !== '' && substr($haystack, 0, strlen($n)) === (string)$n) {
                     return true;
                 }
             }
@@ -31,8 +31,8 @@ if (!function_exists('mix')) {
         $hotPath = get_stylesheet_directory() . $manifestDirectory . '/hot';
         if (file_exists($hotPath)) {
             $url = rtrim(file_get_contents($hotPath));
-            if ($startsWith($url, [ 'http://', 'https://' ])) {
-                $withoutProtocol = array_reverse(explode($url, ':', 2))[0].$path;
+            if ($startsWith($url, ['http://', 'https://'])) {
+                $withoutProtocol = array_reverse(explode($url, ':', 2))[0] . $path;
                 return htmlspecialchars($withoutProtocol, ENT_QUOTES, 'UTF-8');
             }
             return htmlspecialchars("//localhost:8080{$path}", ENT_QUOTES, 'UTF-8');
@@ -60,12 +60,18 @@ if (!function_exists('resolve_uri')) {
     /**
      * Get the url to a versioned Mix file.
      *
-     * @param  string  $path
-     * @param  string  $manifestDirectory
+     * @param  string $path
+     * @param  string $manifestDirectory
      * @return string
      */
     function resolve_uri($path, $manifestDirectory = '')
     {
-      return get_stylesheet_directory_uri() . mix($path, $manifestDirectory);
+        try {
+            $path = get_stylesheet_directory_uri() . mix($path, $manifestDirectory);
+            return $path;
+        } catch (Exception $e) {
+            trigger_error($e->getMessage(), E_WARNING);
+            return get_stylesheet_directory_uri() . $path;
+        }
     }
 }
