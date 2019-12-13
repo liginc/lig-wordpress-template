@@ -9,15 +9,18 @@ define('SITE_NAME', get_bloginfo('name'));
 /**
  * ASSETS
  */
-define('ASSETS', HOME_URL . 'assets/');
+define('ASSETS', 'assets/');
 define('IMAGES', ASSETS . 'images/');
-define('NO_IMAGE', IMAGES . 'noimage.png');
-define('FAVICON', IMAGES . 'favicon.ico');
-define('TOUCH_ICON', IMAGES . 'apple-touch-icon-precomposed.png');
-define('OGP_IMAGE', IMAGES . 'ogp.png');
 define('JS', ASSETS . 'js/');
 define('CSS', ASSETS . 'css/');
 define('SVG', ASSETS . 'svg/');
+
+define('FAVICON', resolve_uri(IMAGES . 'favicon.ico'));
+define('TOUCH_ICON', resolve_uri(IMAGES . 'apple-touch-icon-precomposed.png'));
+define('APP_JS', resolve_uri(JS . 'app.js'));
+define('APP_CSS', resolve_uri(CSS . 'app.css'));
+define('NO_IMAGE', resolve_uri(IMAGES . 'noimage.png'));
+define('OGP_IMAGE', resolve_uri(IMAGES . 'ogp.png'));
 
 /**
  * CONTENTS
