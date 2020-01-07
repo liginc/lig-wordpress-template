@@ -53,7 +53,7 @@ function block_types_white_list($allowed_block_types)
 //        'core-embed/soundcloud', // SoundCloud
 //        'core-embed/spotify', // Spotify
 //        'core-embed/flickr', // Flickr
-//        'core-embed/vimeo', // Viemo
+//        'core-embed/vimeo', // Vimeo
 //        'core-embed/animoto', // Animoto
 //        'core-embed/cloudup', // Cloudup
 //        'core-embed/collegehumor', // CollegeHumor
