@@ -13,10 +13,11 @@ function redirect_404()
         #case is_category():
         #case is_tag():
         #case is_search():
+        #case is_date():
+        #case is_feed():
         case is_attachment():
         case is_trackback():
         case is_embed():
-        case is_date():
         case is_author():
             $wp_query->set_404();
             status_header(404);
