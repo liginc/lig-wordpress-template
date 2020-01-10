@@ -24,7 +24,7 @@ function delete_default_post_type_rewrite_rules($rules)
                  '([^/]+)/page/?([0-9]{1,})/?$',
                  '([^/]+)/-([0-9]{1,})/?$',
                  '([^/]+)(?:/([0-9]+))?/?$'
-             ] as $rule) if (!empty($rules[$rule])) unset($rules[$rule]);
+             ] as $rule) if (array_key_exists($rule, $rules)) unset($rules[$rule]);
     return $rules;
 }
 
