@@ -1,6 +1,6 @@
 <?php wp_footer(); ?>
 
-<script src="<?= APP_JS ?>" async></script>
+<script src="<?= URL_APP_JS ?>" async></script>
 
 </body>
 </html>
