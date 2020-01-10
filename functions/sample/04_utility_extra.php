@@ -48,3 +48,40 @@ function is_newpost($post_id = null, $time = NEW_POST_TIME)
 
     return false;
 }
+
+/**
+ * Get post thumbnail
+ * ( If don't use content image `add_filter( 'thumbnail_use_content_image', '__return_false' );` )
+ */
+function get_the_eyecatch($post_id = null, $size = 'large', $noimage = true)
+{
+    $img_url = apply_filters('get_the_eyecatch', null, $post_id, $size, $noimage);
+
+    if (!empty($img_url)) return $img_url;
+
+    if (is_null($post_id)) {
+        if (!empty($GLOBALS['post'])) {
+            $post_id = $GLOBALS['post']->ID;
+        }
+    }
+
+    if (!empty($post_id)) {
+        $use_content_image = apply_filters('thumbnail_use_content_image', true);
+        if (has_post_thumbnail($post_id)) {
+            return wp_get_attachment_image_url(get_post_thumbnail_id($post_id), $size, true);
+        } elseif ($use_content_image && $content = parse_blocks(get_post($post_id)->post_content)) {
+            foreach ($content as $block) {
+                if ($block["blockName"] === "core/image") {
+                    if (preg_match('/src="(.+?)"/', $block["innerHTML"], $match)) {
+                        return $match[1];
+                    }
+                }
+            }
+        }
+    }
+    if ($noimage) {
+        return NO_IMAGE;
+    } else {
+        return false;
+    }
+}
