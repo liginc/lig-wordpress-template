@@ -1,43 +1,24 @@
 <?php
 /**
- * WordPress SEOプラグイン利用時に使用する関数です。
- * 静的ページのmetaタグ関連を設定します。
- * 使用する際はデフォルトで指定するキーワード、タイトル、ディスクリプションを必ず記載してください。
- *
- * @param unknown_type $title
- * @param unknown_type $args
+ * Settings for Yoast SEO Plugin.
+ * Yoastに関する設定です
  */
-function _set_static_meta($title, $args = array())
-{
-    global $seo_title, $seo_metadesc, $seo_key;
 
-    $seo_title = $title;
-
-    add_filter('wpseo_title', $title);
-
-    if (isset($args['metadesc'])) {
-        $seo_metadesc = $args['metadesc'];
-    } else {
-        //デフォルトのディスクリプション
-        $seo_metadesc = 'ダミーディスクリプション';
+if (defined('WPSEO_FILE')) {
+    /**
+     * Disable robots auto output
+     * robotsを出力させない
+     */
+    function filter_wpseo_robots($robotsstr)
+    {
+        return null;
     }
+    //add_filter('wpseo_robots', 'filter_wpseo_robots', 10, 1);
 
-    if (isset($args['key'])) {
-        $seo_key = $args['key'];
-    } else {
-        //デフォルトのキーワード
-        $seo_key = 'ダミーキーワード';
-    }
-
-    add_filter('wpseo_metadesc', $seo_metadesc);
-    add_filter('wpseo_metakey', $seo_key);
+    /**
+     * Disable Yoast's Comment
+     */
+    add_action('wp_head',function() { ob_start(function($o) {
+        return preg_replace('/^\n?<!--.*?[Y]oast.*?-->\n?$/mi','',$o);
+    }); },~PHP_INT_MAX);
 }
-
-/**
- * Disable robots
- */
-function filter_wpseo_robots( $robotsstr ) {
-    return null;
-};
-
-add_filter( 'wpseo_robots', 'filter_wpseo_robots', 10, 1 );
