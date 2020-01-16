@@ -13,7 +13,7 @@ function set_up_constants()
     /**
      * ASSETS
      */
-    define('URL_ASSETS', 'assets/');
+    define('URL_ASSETS', '/assets/');
     define('URL_IMAGES', URL_ASSETS . 'images/');
     define('URL_JS', URL_ASSETS . 'js/');
     define('URL_CSS', URL_ASSETS . 'css/');
@@ -24,7 +24,6 @@ function set_up_constants()
     define('URL_APP_JS', resolve_uri(URL_JS . 'app.js'));
     define('URL_APP_CSS', resolve_uri(URL_CSS . 'app.css'));
     define('URL_NO_IMAGE', resolve_uri(URL_IMAGES . 'noimage.png'));
-    define('URL_OGP_IMAGE', resolve_uri(URL_IMAGES . 'ogp.png'));
 
     /**
      * CONTENTS
