@@ -28,7 +28,6 @@ function remove_x_pingback($headers) {
 }
 add_filter('wp_headers', 'remove_x_pingback');
 
-
 /**
  * Disable redirect to wp-login.php
  */
