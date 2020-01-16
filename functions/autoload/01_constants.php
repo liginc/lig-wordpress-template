@@ -5,7 +5,7 @@ add_action('init', 'set_up_constants');
 function set_up_constants()
 {
     /**
-     * General Setting
+     * General Settings
      */
     define('HOME_URL', home_url() . '/');
     define('SITE_NAME', get_bloginfo('name'));
