@@ -1,4 +1,8 @@
 <?php
+/**
+ * Register post_type and taxonomy
+ */
+
 //add_action('init', 'add_post_type_and_taxonomy');
 
 function add_post_type_and_taxonomy()
@@ -24,15 +28,15 @@ function add_post_type_and_taxonomy()
     );
 
     $args = array_merge($default_post_type_args, array(
-        'label' => 'ラベル',
+        'label' => 'POST TYPE NAME',
         'rewrite' => array('slug' => 'post_type_name')
     ));
     register_post_type("post_type_name", $args);
 
 
     $args = array_merge($default_term_args,array(
-        'label' => 'タクソノミー名',
-        'rewrite' => array('slug' => 'スラッグ名')
+        'label' => 'TAXONOMY NAME',
+        'rewrite' => array('slug' => 'taxonomy slug')
     ));
-    register_taxonomy('タクソノミー', array('post_type_name'), $args);
+    register_taxonomy('taxonomy_name', array('post_type_name'), $args);
 }

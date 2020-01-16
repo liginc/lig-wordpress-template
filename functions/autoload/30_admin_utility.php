@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Hide menu items
+ * Hide dashboard menu items
  */
 function lig_wp_remove_menus()
 {
@@ -11,7 +11,6 @@ function lig_wp_remove_menus()
         remove_submenu_page('index.php', 'update-core.php');
     }
 }
-
 add_action('admin_menu', 'lig_wp_remove_menus');
 
 /**

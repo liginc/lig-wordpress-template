@@ -1,8 +1,7 @@
 <?php
 /**
- * 404 Redirection
+ * 404 Redirect
  */
-
 add_action('template_redirect', 'redirect_404');
 function redirect_404()
 {

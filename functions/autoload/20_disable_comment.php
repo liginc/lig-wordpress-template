@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * Disable comment
+ */
 add_filter('comments_open', '__return_false');
 
+/**
+ * Remove comment page rewrite rules
+ */
 add_action('init', 'remove_comment_rewrite_rule');
 function remove_comment_rewrite_rule()
 {
@@ -23,6 +29,9 @@ function delete_comment_rewrite_rules($rules)
     return $rules;
 }
 
+/**
+ * Hide comment menu on dashboard menu
+ */
 add_action('admin_menu', 'hide_comment_menus');
 function hide_comment_menus()
 {
@@ -30,11 +39,11 @@ function hide_comment_menus()
 }
 
 /**
- * 記事一覧からコメントカラム削除
+ * Hide comment column on dashboard post list
  */
 add_filter('manage_posts_columns', 'customize_admin_manage_posts_comment_column');
 function customize_admin_manage_posts_comment_column($columns)
 {
-    unset($columns['comments']); //コメントカラムの削除
+    unset($columns['comments']);
     return $columns;
 }
