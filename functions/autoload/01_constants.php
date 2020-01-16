@@ -13,7 +13,7 @@ function set_up_constants()
     /**
      * ASSETS
      */
-    define('URL_ASSETS', 'assets/');
+    define('URL_ASSETS', '/assets/');
     define('URL_IMAGES', URL_ASSETS . 'images/');
     define('URL_JS', URL_ASSETS . 'js/');
     define('URL_CSS', URL_ASSETS . 'css/');
