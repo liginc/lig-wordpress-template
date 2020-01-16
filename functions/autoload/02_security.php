@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Hide PHP version
+ */
+header_register_callback(function(){
+    header_remove('X-Powered-By');
+});
+
+/**
  * Hide WP version
  */
 remove_action('wp_head', 'wp_generator');
