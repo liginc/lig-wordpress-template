@@ -11,3 +11,4 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?= file_get_contents(get_stylesheet_directory() . '/assets/svg/sprite.svg'); ?>
