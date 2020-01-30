@@ -1,8 +1,8 @@
 **Theme Name:** LIG WordPress Template  
 **Theme URI:** https://github.com/liginc/lig-wordpress-template  
 **Contributors:** LIG inc  
-**Requires at least:** WordPress 4.9.6  
-**Version:** 0.1  
+**Requires at least:** WordPress 5.0.2
+**Version:** 0.2.0 
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 **Tags:** scratch  
