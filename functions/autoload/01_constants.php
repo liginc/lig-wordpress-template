@@ -51,4 +51,33 @@ function set_up_constants()
     /*
     define('', '');
     */
+
+    /**
+     * IMAGE SIZES
+     */
+    define('RESIZE_IMAGE_SIZES', [
+        414,
+        768,
+        828,
+        1024,
+        1280,
+        1440,
+        1536,
+        1600
+    ]);
+
+    /*
+     * キーはメディアクエリ、値は入れたい画像
+     * 'default'=>'default'を入れると、imgタグは元画像のurlがセットされます
+     * 'default'=>414にすると、imgタグに414のsrcsetが挿入されます
+     */
+    define('IMAGE_SIZES_FULL', [
+        414 => 414,
+        768 => 768,
+        1024 => 1024,
+        1280 => 1280,
+        1440 => 1440,
+        1600 => 1600,
+        'default' => 'original'
+    ]);
 }
