@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * Add Custom Dashboard Widget
+ */
+function add_custom_widget()
+{
+    wp_add_dashboard_widget('custom_widget', 'Title', function () {
+        echo <<<EOF
+/* Type widget content here */
+EOF;
+
+    });
+}
+
+//add_action( 'wp_dashboard_setup', 'add_custom_widget' );
 
 
 /**
@@ -7,7 +21,7 @@
  */
 function lig_wp_change_admin_css()
 {
-    echo '<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory').'/css/custom-login-page.css" />';
+    echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('template_directory') . '/css/custom-login-page.css" />';
 }
 
 //add_action( 'login_head', 'lig_wp_change_css_admin' );
