@@ -22,3 +22,15 @@ function hide_quickedit( $actions ) {
 }
 add_filter( 'post_row_actions', 'hide_quickedit' );
 add_filter( 'page_row_actions', 'hide_quickedit' );
+
+/**
+ * Remove Dashboard Widgets
+ */
+function remove_dashboard_widgets() {
+    remove_action( 'welcome_panel', 'wp_welcome_panel' ); // ようこそ
+    remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' ); // 概要
+    remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' ); // アクティビティ
+    remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' ); // クイックドラフト
+    remove_meta_box( 'dashboard_primary', 'dashboard', 'side' ); // WordPressニュース
+}
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
