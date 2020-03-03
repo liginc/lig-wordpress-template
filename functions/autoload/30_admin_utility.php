@@ -34,3 +34,12 @@ function remove_dashboard_widgets() {
     remove_meta_box( 'dashboard_primary', 'dashboard', 'side' ); // WordPressニュース
 }
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
+
+/**
+ * Modify admin footer credit
+ */
+function modify_admin_footer_credit()
+{
+    echo ' <a href="https://liginc.co.jp" target="_blank">Powered by LIG inc</a>';
+}
+add_filter( 'admin_footer_text', 'modify_admin_footer_credit' );

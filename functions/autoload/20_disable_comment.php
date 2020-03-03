@@ -47,3 +47,11 @@ function customize_admin_manage_posts_comment_column($columns)
     unset($columns['comments']);
     return $columns;
 }
+
+/**
+ * Remove comment menu from admin bar
+ */
+function remove_comment_bar_menus($wp_admin_bar) {
+    $wp_admin_bar->remove_menu( 'comments' );
+}
+add_action('admin_bar_menu', 'remove_comment_bar_menus', 200);

@@ -59,3 +59,29 @@ function get_modified_class($class_name, $modifier)
 {
     return (!empty($modifier)) ? $class_name . ' ' . $class_name . '--' . $modifier : $class_name;
 }
+
+/**
+ * Modify body_class
+ */
+add_filter('body_class', function ($classes) {
+    global $post;
+    switch (true) {
+        case is_front_page():
+            unset($classes[array_search('blog', $classes)]);
+            $classes[] = 'front-page';
+            break;
+        case is_page():
+            unset($classes[array_search('page-id-'.$post->ID, $classes)]);
+            $classes[] = 'page-' . $GLOBALS['post']->post_name;
+            $parent = $post;
+            while ($parent->post_parent) {
+                unset($classes[array_search('parent-pageid-'.$parent->post_parent, $classes)]);
+                $descendant = array_search('child-of-'.$parent->post_name, $classes);
+                $parent = get_post($parent->post_parent);
+                $classes[] = 'child-of-' . $parent->post_name;
+                if ($descendant) $classes[] = 'descendant-of-'.$parent->post_name;
+            }
+            break;
+    }
+    return $classes;
+});
