@@ -16,10 +16,10 @@ function remove_bar_menus( $wp_admin_bar ) {
     $wp_admin_bar->remove_menu( 'new-link' );     // 新規 -> リンク
     $wp_admin_bar->remove_menu( 'new-page' );     // 新規 -> 固定ページ
     $wp_admin_bar->remove_menu( 'new-user' );     // 新規 -> ユーザー
-    $wp_admin_bar->remove_menu( 'my-account' );   // マイアカウント
+//    $wp_admin_bar->remove_menu( 'my-account' );   // マイアカウント
     $wp_admin_bar->remove_menu( 'user-info' );    // マイアカウント -> プロフィール
     $wp_admin_bar->remove_menu( 'edit-profile' ); // マイアカウント -> プロフィール編集
-    $wp_admin_bar->remove_menu( 'logout' );       // マイアカウント -> ログアウト
+//    $wp_admin_bar->remove_menu( 'logout' );       // マイアカウント -> ログアウト
     $wp_admin_bar->remove_menu( 'search' );       // 検索 (公開側)
 }
 add_action('admin_bar_menu', 'remove_bar_menus', 201);

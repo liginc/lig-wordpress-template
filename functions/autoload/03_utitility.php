@@ -22,7 +22,7 @@ function get_first_term($post_id, $tax = 'category')
     if (!empty($terms[0])) {
         return $terms[0];
     } else {
-        return array();
+        return [];
     }
 }
 
