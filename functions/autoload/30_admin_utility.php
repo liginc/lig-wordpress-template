@@ -38,6 +38,7 @@ function lig_admin_utility()
         remove_meta_box('dashboard_activity', 'dashboard', 'normal'); // アクティビティ
         remove_meta_box('dashboard_quick_press', 'dashboard', 'side'); // クイックドラフト
         remove_meta_box('dashboard_primary', 'dashboard', 'side'); // WordPressニュース
+        remove_meta_box('dashboard_site_health', 'dashboard', 'normal'); // サイトヘルスステータス
     }
     add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
