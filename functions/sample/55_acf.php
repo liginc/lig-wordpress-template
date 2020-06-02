@@ -1,7 +1,6 @@
 <?php
 
 if (defined('ACF')) {
-
     //add_action('acf/init', 'display_acf_option_page');
     function display_acf_option_page()
     {
@@ -31,4 +30,11 @@ if (defined('ACF')) {
         }
     }
 
+    //Set Google map API KEY
+    //add_filter('acf/fields/google_map/api', 'set_google_map_api');
+    function set_google_map_api($api)
+    {
+        if (defined('GMAP_API')) $api['key'] = GMAP_API;
+        return $api;
+    }
 }
