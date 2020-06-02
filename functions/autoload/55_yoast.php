@@ -20,11 +20,13 @@ if (defined('WPSEO_FILE')) {
     /**
      * Disable Yoast's Comment
      */
-    add_action('wp_head', function () {
+    function remove_yoast_head_comment()
+    {
         ob_start(function ($o) {
             return preg_replace('/^\n?<!--.*?[Y]oast.*?-->\n?$/mi', '', $o);
         });
-    }, ~PHP_INT_MAX);
+    };
+    //add_action('wp_head', 'remove_yoast_head_comment', ~PHP_INT_MAX);
 
     /**
      * WordPressSEOプラグインのメニュー非表示.
