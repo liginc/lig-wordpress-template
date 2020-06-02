@@ -19,11 +19,11 @@ function set_up_constants()
     define('URL_CSS', URL_ASSETS . 'css/');
     define('URL_SVG', URL_ASSETS . 'svg/');
 
-    define('URL_FAVICON', resolve_uri(URL_IMAGES . 'favicon.ico'));
-    define('URL_TOUCH_ICON', resolve_uri(URL_IMAGES . 'apple-touch-icon-precomposed.png'));
-    define('URL_APP_JS', resolve_uri(URL_JS . 'app.js'));
-    define('URL_APP_CSS', resolve_uri(URL_CSS . 'app.css'));
-    define('URL_NO_IMAGE', resolve_uri(URL_IMAGES . 'noimage.png'));
+    define('URL_FAVICON', resolve_uri('/assets/images/favicon.ico'));
+    define('URL_TOUCH_ICON', resolve_uri('/assets/images/apple-touch-icon-precomposed.png'));
+    define('URL_APP_JS', resolve_uri('/assets/js/app.js'));
+    define('URL_APP_CSS', resolve_uri('/assets/css/app.css'));
+    define('URL_NO_IMAGE', resolve_uri('assets/images/noimage.png'));
 
     /**
      * CONTENTS

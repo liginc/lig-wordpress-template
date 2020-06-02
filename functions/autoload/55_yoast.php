@@ -5,15 +5,17 @@
  */
 
 if (defined('WPSEO_FILE')) {
+
+    /**
+     * Disable yoast json-ld display
+     */
+//    add_filter( 'wpseo_json_ld_output', '__return_false' );
+
     /**
      * Disable robots auto output
      * robotsを出力させない
      */
-    function filter_wpseo_robots($robotsstr)
-    {
-        return null;
-    }
-    //add_filter('wpseo_robots', 'filter_wpseo_robots', 10, 1);
+    //add_filter('wpseo_robots', '__return_false', 10, 1);
 
     /**
      * Disable Yoast's Comment
