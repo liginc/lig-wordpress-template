@@ -12,6 +12,15 @@ if (defined('WPSEO_FILE')) {
 //    add_filter( 'wpseo_json_ld_output', '__return_false' );
 
     /**
+     * modify json-ld
+     */
+    //add_filter('wpseo_schema_article', 'modify_json_ld', 10, 1);
+    function modify_json_ld($schema_data)
+    {
+        return $schema_data;
+    }
+
+    /**
      * Disable robots auto output
      * robotsを出力させない
      */
