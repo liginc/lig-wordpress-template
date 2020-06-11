@@ -1,7 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ryota
- * Date: 2020/06/03
- * Time: 1:50
- */
+foreach (glob(TEMPLATEPATH . '/functions/autoload/*.php') as $file) {
+    require_once $file;
+}

@@ -1,7 +1,3 @@
 <?php
-/**
- *  Auto load helper functions
- */
-foreach (glob(TEMPLATEPATH . '/functions/autoload/*.php') as $file) {
-    require_once $file;
-}
+$vender_path = TEMPLATEPATH . '/functions/vender.php';
+if ( file_exists($vender_path) ) require_once $vender_path;
