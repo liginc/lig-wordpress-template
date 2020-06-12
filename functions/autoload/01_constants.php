@@ -15,15 +15,16 @@ function set_up_constants()
      */
     define('URL_ASSETS', '/assets/');
     define('URL_IMAGES', URL_ASSETS . 'images/');
+    define('PATH_IMAGES', STYLESHEETPATH . '/assets/images/');
     define('URL_JS', URL_ASSETS . 'js/');
     define('URL_CSS', URL_ASSETS . 'css/');
     define('URL_SVG', URL_ASSETS . 'svg/');
 
-    define('URL_FAVICON', resolve_uri(URL_IMAGES . 'favicon.ico'));
-    define('URL_TOUCH_ICON', resolve_uri(URL_IMAGES . 'apple-touch-icon-precomposed.png'));
-    define('URL_APP_JS', resolve_uri(URL_JS . 'app.js'));
-    define('URL_APP_CSS', resolve_uri(URL_CSS . 'app.css'));
-    define('URL_NO_IMAGE', resolve_uri(URL_IMAGES . 'noimage.png'));
+    define('URL_FAVICON', resolve_uri('/assets/images/favicon.ico'));
+    define('URL_TOUCH_ICON', resolve_uri('/assets/images/apple-touch-icon-precomposed.png'));
+    define('URL_APP_JS', resolve_uri('/assets/js/app.js'));
+    define('URL_APP_CSS', resolve_uri('/assets/css/app.css'));
+    define('URL_NO_IMAGE', resolve_uri('assets/images/noimage.png'));
 
     /**
      * CONTENTS
@@ -51,4 +52,31 @@ function set_up_constants()
     /*
     define('', '');
     */
+
+
+    /**
+     * IMAGE SIZES
+     */
+    define('RESIZE_IMAGE_SIZES', [
+        414,
+        828,
+        1280,
+        1600,
+        2048
+    ]);
+
+    /*
+     * キーはメディアクエリ、値は入れたい画像
+     * 'default'=>'default'を入れると、imgタグは元画像のurlがセットされます
+     * 'default'=>414にすると、imgタグに414のsrcsetが挿入されます
+     */
+    define('IMAGE_SIZES_FULL',[
+        414 => 414,
+        768 => 768,
+//        1024 => 1024,
+        1280 => 1280,
+//        1440 => 1440,
+        1600 => 1600,
+        'default' => 'original'
+    ]);
 }

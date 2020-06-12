@@ -1,17 +1,5 @@
 <?php
 /**
- *
- */
-function is_static_page($slug = '')
-{
-    if (strstr($_SERVER['REQUEST_URI'], $slug)):
-        return true;
-    endif;
-
-    return false;
-}
-
-/**
  * ユーザページ等でログインIDではなくニックネームを取得する.
  */
 add_filter('get_the_author_display_name', 'change_display_dame', 10, 2);
@@ -47,29 +35,4 @@ function is_newpost($post_id = null, $time = NEW_POST_TIME)
     endif;
 
     return false;
-}
-
-/**
- * Get post thumbnail
- */
-function get_the_eyecatch($post_id = null, $thumbnail = 'full', $noimage = false, $only_url = true)
-{
-    if (is_null($post_id)) {
-        if (!empty($GLOBALS['post'])) {
-            $post_id = $GLOBALS['post']->ID;
-        } else {
-            if (!$noimage) {
-                return false;
-            } else {
-                return NO_IMAGE;
-            }
-        }
-    }
-    if (has_post_thumbnail($post_id)) {
-        return ($only_url) ? wp_get_attachment_image_url(get_post_thumbnail_id($post_id), $thumbnail, true) : wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $thumbnail, true);
-    } elseif (!$noimage) {
-        return false;
-    } else {
-        return NO_IMAGE;
-    }
 }

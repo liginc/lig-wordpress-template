@@ -17,8 +17,3 @@ function import_part($tpl, $vars = array())
 {
     import_template('parts/'.ltrim($tpl, '/'), $vars);
 }
-
-function import_module($tpl, $vars = array())
-{
-    import_template('modules/'.ltrim($tpl, '/'), $vars);
-}

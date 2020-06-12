@@ -12,8 +12,8 @@ add_action('init', 'remove_comment_rewrite_rule');
 function remove_comment_rewrite_rule()
 {
     global $wp_rewrite;
-    unset($wp_rewrite->comments_base);
-    unset($wp_rewrite->comments_pagination_base);
+    if (!empty($wp_rewrite->comments_base)) unset($wp_rewrite->comments_base);
+    if (!empty($wp_rewrite->comments_pagination_base)) unset($wp_rewrite->comments_pagination_base);
     return $wp_rewrite;
 }
 
@@ -44,6 +44,16 @@ function hide_comment_menus()
 add_filter('manage_posts_columns', 'customize_admin_manage_posts_comment_column');
 function customize_admin_manage_posts_comment_column($columns)
 {
-    unset($columns['comments']);
+    if (!empty($columns['comments'])) unset($columns['comments']);
     return $columns;
 }
+
+/**
+ * Remove comment menu from admin bar
+ */
+function remove_comment_bar_menus($wp_admin_bar)
+{
+    $wp_admin_bar->remove_menu('comments');
+}
+
+add_action('admin_bar_menu', 'remove_comment_bar_menus', 200);
