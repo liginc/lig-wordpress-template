@@ -9,7 +9,7 @@ if (defined('WPSEO_FILE')) {
     /**
      * Disable yoast json-ld display
      */
-//    add_filter( 'wpseo_json_ld_output', '__return_false' );
+    add_filter( 'wpseo_json_ld_output', '__return_false' );
 
     /**
      * modify json-ld
