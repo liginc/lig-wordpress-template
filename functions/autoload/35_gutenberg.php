@@ -13,7 +13,7 @@ function block_types_white_list($allowed_block_types)
         'core/list', // リスト
 //        'core/audio', // 音声
 //        'core/cover', // カバー
-//        'core/file', // ファイル
+        'core/file', // ファイル
 //        'core/video', // 動画
 
         // フォーマット
