@@ -106,7 +106,7 @@ function lig_acf_auto_export()
 
     }
 
-    $data .= "endif; ?>";
+    $data .= "endif;";
 
     if (is_writable(__DIR__)) {
         file_put_contents(__DIR__ . '/99_acf_setting.php', $data);
