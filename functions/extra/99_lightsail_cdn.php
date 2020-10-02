@@ -78,7 +78,7 @@ add_action('transition_post_status', 'lig_check_post_update', 10, 3);
 
 function lig_check_post_update($new_status, $old_status, $post)
 {
-    if (empty(WP_AWS_LS_CDN_CACHE_CLEAR) || !(('publish' === $new_status) || ('publish' === $old_status && $new_status !== $old_status))) return;
+    if (!WP_AWS_LS_CDN_CACHE_CLEAR || !(('publish' === $new_status) || ('publish' === $old_status && $new_status !== $old_status))) return;
     if( ! wp_next_scheduled( 'lig_reset_cdn_cache_cron' ) ) {
         wp_schedule_single_event(time() + 60, 'lig_reset_cdn_cache_cron');
     }
