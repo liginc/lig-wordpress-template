@@ -79,14 +79,14 @@ add_action('transition_post_status', 'lig_check_post_update', 10, 3);
 function lig_check_post_update($new_status, $old_status, $post)
 {
     if (!WP_AWS_LS_CDN_CACHE_CLEAR || !(('publish' === $new_status) || ('publish' === $old_status && $new_status !== $old_status))) return;
-    if( ! wp_next_scheduled( 'lig_reset_cdn_cache_cron' ) ) {
-        wp_schedule_single_event(time() + 60, 'lig_reset_cdn_cache_cron');
+    if (!wp_next_scheduled('lig_reset_cdn_cache_clear_cron')) {
+        wp_schedule_single_event(time() + 60, 'lig_reset_cdn_cache_clear_cron');
     }
 }
 
-add_action('lig_reset_cdn_cache_cron', 'lig_reset_cdn_cache');
+add_action('lig_reset_cdn_cache_clear_cron', 'lig_reset_cdn_cache_clear');
 
-function lig_reset_cdn_cache()
+function lig_reset_cdn_cache_clear()
 {
     require_once(STYLESHEETPATH . '/functions/vendor/autoload.php');
 
@@ -103,7 +103,24 @@ function lig_reset_cdn_cache()
         $result = $client->resetDistributionCache([
             'distributionName' => WP_AWS_LS_CDN_DISTRIBUTION_NAME,
         ]);
+        update_option('lig_reset_cdn_cache_clear', serialize([date_i18n('Y-m-d H:i:s'), true]));
     } catch (AwsException $e) {
-        echo $e->getMessage() . "\n";
+        update_option('lig_reset_cdn_cache_clear', serialize([date_i18n('Y-m-d H:i:s'), $e->getMessage()]));
     }
+}
+
+
+add_action('wp_dashboard_setup', 'lig_reset_cdn_cache_clear_dashboard_widgets');
+function lig_reset_cdn_cache_clear_dashboard_widgets()
+{
+    wp_add_dashboard_widget('lig_reset_cdn_cache_clear', 'Lightsail CDN キャッシュクリア', 'lig_reset_cdn_cache_clear_result_display');
+}
+
+function lig_reset_cdn_cache_clear_result_display()
+{
+    $status = get_option('lig_reset_cdn_cache_clear');
+    if (empty($status)) return;
+    $status = unserialize($status);
+    $html = '<p>前回のキャッシュクリア試行日時：' . $status[0] . '</p><p style="color: ' . (($status[1] === true) ? 'green' : 'red') . ';">ステータス：' . (($status[1] === true) ? '成功' : '失敗<br>------<br>' . $status[1]) . '</p>';
+    echo $html;
 }
