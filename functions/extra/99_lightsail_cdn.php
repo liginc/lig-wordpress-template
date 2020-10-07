@@ -140,7 +140,7 @@ function lig_reset_cdn_cache_clear_result_display()
 add_action('admin_enqueue_scripts', function () {
     $handle = 'lig_reset_cdn_cache_clear_manually';
 
-    wp_register_script($handle, get_stylesheet_directory_uri() . '/lib/admin/js/lightsail_cdn.js', ['jquery'], '', true);
+    wp_register_script($handle, get_stylesheet_directory_uri() . '/functions/lib/admin/js/lightsail_cdn.js', ['jquery'], '', true);
     $localize = [
         'ajax_url' => admin_url('admin-ajax.php'),
         'action' => 'lig_reset_cdn_cache_clear',
