@@ -104,11 +104,20 @@ function lig_reset_cdn_cache_clear()
             'distributionName' => WP_AWS_LS_CDN_DISTRIBUTION_NAME,
         ]);
         update_option('lig_reset_cdn_cache_clear', serialize([date_i18n('Y-m-d H:i:s'), true]));
+        return "0";
     } catch (AwsException $e) {
         update_option('lig_reset_cdn_cache_clear', serialize([date_i18n('Y-m-d H:i:s'), $e->getMessage()]));
+        return "1";
     }
 }
 
+add_action('wp_ajax_lig_reset_cdn_cache_clear', function () {
+    if (wp_next_scheduled('lig_reset_cdn_cache_clear_cron')) {
+        wp_clear_scheduled_hook('lig_reset_cdn_cache_clear_cron');
+    }
+    echo lig_reset_cdn_cache_clear();
+    die();
+});
 
 add_action('wp_dashboard_setup', 'lig_reset_cdn_cache_clear_dashboard_widgets');
 function lig_reset_cdn_cache_clear_dashboard_widgets()
@@ -118,9 +127,25 @@ function lig_reset_cdn_cache_clear_dashboard_widgets()
 
 function lig_reset_cdn_cache_clear_result_display()
 {
+
     $status = get_option('lig_reset_cdn_cache_clear');
-    if (empty($status)) return;
     $status = unserialize($status);
-    $html = '<p>前回のキャッシュクリア試行日時：' . $status[0] . '</p><p style="color: ' . (($status[1] === true) ? 'green' : 'red') . ';">ステータス：' . (($status[1] === true) ? '成功' : '失敗<br>------<br>' . $status[1]) . '</p>';
-    echo $html;
+    if (!empty($status)) {
+        echo '<p>前回のキャッシュクリア試行日時：' . $status[0] . '</p><p style="color: ' . (($status[1] === true) ? 'green' : 'red') . ';">ステータス：' . (($status[1] === true) ? '成功' : '失敗<br>------<br>' . $status[1]) . '</p>';
+    }
+
+    echo '<button id="clear-cache">手動キャッシュクリア</button>';
 }
+
+add_action('admin_enqueue_scripts', function () {
+    $handle = 'lig_reset_cdn_cache_clear_manually';
+
+    wp_register_script($handle, get_stylesheet_directory_uri() . '/lib/admin/js/lightsail_cdn.js', ['jquery'], '', true);
+    $localize = [
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'action' => 'lig_reset_cdn_cache_clear',
+    ];
+    wp_localize_script($handle, 'localize', $localize);
+
+    wp_enqueue_script($handle);
+});
