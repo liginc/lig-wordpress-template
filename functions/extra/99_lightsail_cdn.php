@@ -103,10 +103,10 @@ function lig_reset_cdn_cache_clear()
         $result = $client->resetDistributionCache([
             'distributionName' => WP_AWS_LS_CDN_DISTRIBUTION_NAME,
         ]);
-        update_option('lig_reset_cdn_cache_clear', serialize([date_i18n('Y-m-d H:i:s'), true]));
+        update_option('lig_reset_cdn_cache_clear', serialize([date_i18n('Y-m-d H:i:s'), true]), false);
         return "0";
     } catch (AwsException $e) {
-        update_option('lig_reset_cdn_cache_clear', serialize([date_i18n('Y-m-d H:i:s'), $e->getMessage()]));
+        update_option('lig_reset_cdn_cache_clear', serialize([date_i18n('Y-m-d H:i:s'), $e->getMessage()]), false);
         return "1";
     }
 }
