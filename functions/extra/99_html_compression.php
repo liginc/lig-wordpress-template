@@ -5,7 +5,6 @@ class WP_HTML_Compression
     // Settings
     protected $compress_css = true;
     protected $compress_js = true;
-    protected $info_comment = true;
     protected $remove_comments = true;
 
     // Variables
@@ -21,18 +20,6 @@ class WP_HTML_Compression
     public function __toString()
     {
         return $this->html;
-    }
-
-    protected function bottomComment($raw, $compressed)
-    {
-        $raw = strlen($raw);
-        $compressed = strlen($compressed);
-
-        $savings = ($raw - $compressed) / $raw * 100;
-
-        $savings = round($savings, 2);
-
-        return '<!--HTML udah dikompress, lumayan tuh berkurang ' . $savings . '%. Tadinya ' . $raw . ' bytes, sekarang cuma ' . $compressed . ' bytes-->';
     }
 
     protected function minifyHTML($html)
@@ -99,10 +86,6 @@ class WP_HTML_Compression
     public function parseHTML($html)
     {
         $this->html = $this->minifyHTML($html);
-
-        if ($this->info_comment) {
-            $this->html .= "\n" . $this->bottomComment($html, $this->html);
-        }
     }
 
     protected function removeWhiteSpace($str)
