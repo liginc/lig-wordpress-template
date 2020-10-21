@@ -69,4 +69,9 @@ if (defined('WPSEO_FILE')) {
     function lig_yoast_site_title_filter( $title ){
         return $title;
     }
+
+    //add_filter( 'wpseo_opengraph_image', 'lig_yoast_og_image_filter');
+    function lig_yoast_og_image_filter( $img ) {
+        return $img;
+    }
 }
