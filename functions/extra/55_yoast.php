@@ -39,6 +39,7 @@ if (defined('WPSEO_FILE')) {
 
     /**
      * WordPressSEOプラグインのメニュー非表示.
+     * Hide Yoast plugin menu
      */
     function lig_wp_remove_wordpress_seo_menu()
     {
@@ -49,4 +50,28 @@ if (defined('WPSEO_FILE')) {
         echo '</style>';
     }
     //add_action( 'admin_head', 'lig_wp_remove_wordpress_seo_menu', 100);
+
+
+    //add_filter('wpseo_metadesc', 'lig_yoast_description_filter');
+    //add_filter('wpseo_opengraph_desc', 'lig_yoast_description_filter');
+    function lig_yoast_description_filter($desc)
+    {
+        return $desc;
+    }
+
+    //add_filter('wpseo_title','lig_yoast_title_filter');
+    //add_filter('wpseo_opengraph_title','lig_yoast_title_filter');
+    function lig_yoast_title_filter( $title ){
+        return $title;
+    }
+
+    //add_filter('wpseo_opengraph_site_name','lig_yoast_site_title_filter');
+    function lig_yoast_site_title_filter( $title ){
+        return $title;
+    }
+
+    //add_filter( 'wpseo_opengraph_image', 'lig_yoast_og_image_filter');
+    function lig_yoast_og_image_filter( $img ) {
+        return $img;
+    }
 }
