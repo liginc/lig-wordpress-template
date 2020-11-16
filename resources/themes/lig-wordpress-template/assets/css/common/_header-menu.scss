@@ -1,0 +1,45 @@
+//header menu
+.header-menu {
+  @include sp() {
+    display: none;
+    position: fixed;
+    top: $dummy_size;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - #{$dummy_size});
+    z-index: 5;
+    &.is-open {
+      display: block;
+      background: $white;
+    }
+  }
+}
+
+.header-menu__list {
+  pointer-events: auto;
+  @extend %flex-to-block;
+}
+
+.header-menu__item {
+  &:not(:last-child) {
+    @include pc() {
+      //margin-right: rem($header-menu-pc-margin-right);
+    }
+    @include sp() {
+      //margin-bottom: rem_sp($header-menu-sp-margin-bottom);
+    }
+  }
+}
+
+.header-menu__link {
+  &:hover {
+    text-decoration: underline;
+  }
+  &.is-current {
+    text-decoration: underline;
+  }
+}
+
+.header-menu__text {
+  //
+}

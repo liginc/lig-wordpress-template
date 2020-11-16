@@ -1,0 +1,20 @@
+//breadcrumbs
+
+.breadcrumbs {
+  //
+}
+
+.breadcrumbs__list {
+  display: flex;
+}
+
+.breadcrumbs__item {
+  &:not(.is-last):after {
+    content: "＞";
+    display: inline-block;
+  }
+}
+
+.breadcrumbs__link {
+  //
+}

@@ -1,0 +1,27 @@
+//footer menu
+.footer-menu {
+  //
+}
+
+.footer-menu__list {
+  @extend %flex-to-block;
+}
+
+.footer-menu__item {
+  &:not(:last-child) {
+    @include pc() {
+      //margin-right: rem($footer-menu-pc-margin-right);
+    }
+    @include sp() {
+      //margin-bottom: rem_sp($footer-menu-sp-margin-bottom);
+    }
+  }
+}
+
+.footer-menu__link {
+  //
+}
+
+.footer-menu__text {
+  //
+}

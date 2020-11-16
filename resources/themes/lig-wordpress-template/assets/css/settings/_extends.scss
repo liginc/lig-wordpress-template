@@ -1,0 +1,23 @@
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%flex-to-block {
+  display: flex;
+  @include sp() {
+    display: block;
+  }
+}
+
+%button {
+  display: block;
+  width: fit-content;
+  border: 1px black solid;
+}
+
+%dummy-icon {
+  width: 60px;
+  height: 60px;
+}
