@@ -47,6 +47,8 @@ class LIG_YOAST_SETTINGS
         add_action('parse_query', function () {
             if (!is_page()) return;
             $queried_object = get_queried_object();
+
+            //Confingに対象のslugがない場合return
             if (!array_key_exists($queried_object->post_name, $this->config->page)) return;
             if (array_key_exists('metadesc', $this->config->page[$queried_object->post_name])) {
                 $this->current_page_desc = $this->config->page[$queried_object->post_name]['metadesc'];
@@ -55,7 +57,7 @@ class LIG_YOAST_SETTINGS
                     if (!$this->check_descendants($page['descendants'], $current_num)) continue;
                 }
             }
-            if (empty($this->current_page_desc)) $this->current_page_desc = $this->config->site_settings['site-description'];
+            if (empty($this->current_page_desc)) $this->current_page_desc = $this->config->site_description;
             add_filter('wpseo_metadesc', [$this, 'set_page_description']);
             add_filter('wpseo_opengraph_desc', [$this, 'set_page_description']);
         });
@@ -113,14 +115,14 @@ class LIG_YOAST_SETTINGS
     public function set_og_site_name()
     {
         add_filter('wpseo_opengraph_site_name', function () {
-            return $this->config->site_settings['site-title'];
+            return $this->config->site_title;
         });
     }
 
     public function set_json_ld_website_description()
     {
         add_filter('wpseo_schema_website', function ($schema_pieces) {
-            $schema_pieces['description'] = $this->config->site_settings['site-description'];
+            $schema_pieces['description'] = $this->config->site_description;
         }, 10, 3);
     }
 

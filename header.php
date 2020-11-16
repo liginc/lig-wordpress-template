@@ -10,5 +10,9 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body id="body" <?php body_class(); ?>>
 <?= file_get_contents(get_stylesheet_directory() . '/assets/svg/sprite.svg'); ?>
+
+<?php import_part('common/header') ?>
+
+<main id="main" class="main utl-container" role="main">

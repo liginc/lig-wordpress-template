@@ -66,6 +66,7 @@ if (!function_exists('resolve_uri')) {
      */
     function resolve_uri($path, $manifestDirectory = '')
     {
+        if (defined('DOING_AJAX') && DOING_AJAX) return get_stylesheet_directory_uri() . $path;
         try {
             $path = get_stylesheet_directory_uri() . mix($path, $manifestDirectory);
             return $path;

@@ -13,7 +13,7 @@ function block_types_white_list($allowed_block_types)
         'core/list', // リスト
 //        'core/audio', // 音声
 //        'core/cover', // カバー
-        'core/file', // ファイル
+//        'core/file', // ファイル
 //        'core/video', // 動画
 
         // フォーマット
@@ -27,11 +27,11 @@ function block_types_white_list($allowed_block_types)
 
         // レイアウト要素
         'core/buttons', // ボタン
-//        'core/columns', // カラム
+        'core/columns', // カラム
 //        'core/media-text', // メディアと文章
 //        'core/more', // 続きを読む
 //        'core/nextpage', // 改ページ
-//        'core/separator', // 区切り
+        'core/separator', // 区切り
 //        'core/spacer', // スペーサー
 
         // ウィジェット
@@ -42,7 +42,7 @@ function block_types_white_list($allowed_block_types)
 //        'core/latest-posts', // 最新の記事
 
         // 埋め込み
-//        'core/embed', // 埋め込み
+        'core/embed', // 埋め込み
 //        'core-embed/twitter', // Twitter
         'core-embed/youtube', // YouTube
 //        'core-embed/facebook', // Facebook
@@ -104,7 +104,7 @@ function disable_font_size_changer()
 /**
  * エディタにスタイルを適用
  */
-add_action('after_setup_theme', 'custom_gutenberg_style');
+//add_action('after_setup_theme', 'custom_gutenberg_style');
 function custom_gutenberg_style($stylesheet)
 {
     add_theme_support('editor-styles');
@@ -114,7 +114,7 @@ function custom_gutenberg_style($stylesheet)
 /**
  * デフォルトスタイル削除
  */
-add_filter('block_editor_settings', 'remove_default_editor_style', 10, 2);
+//add_filter('block_editor_settings', 'remove_default_editor_style', 10, 2);
 function remove_default_editor_style($editor_settings, $post)
 {
     unset($editor_settings['styles'][0]);
@@ -126,7 +126,7 @@ function remove_default_editor_style($editor_settings, $post)
  * Gutenbergのcss読み込み無効化
  */
 add_action('wp_enqueue_scripts', 'disable_block_style', 9999);
-add_action('admin_enqueue_scripts', 'disable_block_style', 9999);
+//add_action('admin_enqueue_scripts', 'disable_block_style', 9999);
 function disable_block_style()
 {
     wp_dequeue_style('wp-block-library');
