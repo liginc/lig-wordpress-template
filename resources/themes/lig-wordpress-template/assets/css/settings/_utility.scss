@@ -1,0 +1,219 @@
+.utl-only-pc {
+  @include sp() {
+    display: none;
+  }
+}
+
+.utl-only-sp {
+  @include pc() {
+    display: none;
+  }
+}
+
+.utl-center {
+  @extend %flex-center;
+}
+
+.utl-container {
+  position: relative;
+}
+
+.utl-main-layout {
+  position: relative;
+  max-width: rem(wharm() * 2 + bp(pc));
+  margin: 0 auto;
+  padding: 0 rem_wharm();
+  @include sp() {
+    padding: 0 rem_wharm_sp(16);
+  }
+}
+
+.utl-main-layout--wide {
+  position: relative;
+  max-width: rem(wharm() * 2 + bp(fhd));
+  margin: 0 auto;
+}
+
+.utl-main-layout--narrow {
+  max-width: rem($main-layout-padding-pc * 2 + 1024);
+}
+
+.utl-main-layout--under-layer {
+  padding-top: rem_harm(1);
+  padding-bottom: rem_harm(1);
+  @include sp() {
+    padding-top: rem_harm_sp(1);
+    padding-bottom: rem_harm_sp(1);
+  }
+}
+
+$utl-content-body-default-margin-tb: (
+        pc: harm(4),
+        sp: harm_sp(4)
+);
+
+$utl-content-body-font-and-margin-settings-base: (
+        font: base,
+        pc: map_get($utl-content-body-default-margin-tb, pc),
+        sp: map_get($utl-content-body-default-margin-tb, sp),
+        root: '.utl-content-body'
+);
+
+$utl-content-body-font-and-margin-settings: (
+        h2: (
+                font: heading-02,
+                pc: harm(4) harm(1),
+                sp: harm_sp(6) harm_sp(4),
+        ),
+        h3: (
+                font: heading-03,
+                pc: harm(5) harm(2),
+                sp: harm_sp(5) harm_sp(5),
+        ),
+        h4: (
+                font: heading-04,
+                pc: harm(6) harm(3),
+                sp: harm_sp(4) harm_sp(6),
+        ),
+        p: (),
+        li: (
+                pc: harm(6) harm(6),
+                sp: harm_sp(6) harm_sp(6),
+                root: '.utl-content-body ul, .utl-content-body ol'
+        ),
+        th: (),
+        td: (),
+);
+
+.utl-content-body {
+
+  @each $el, $properties in $utl-content-body-font-and-margin-settings {
+    $setting: ();
+    @each $p in map-keys($utl-content-body-font-and-margin-settings-base) {
+      @if (map_has_key($properties, $p)) {
+        $setting: append($setting, map_get($properties, $p));
+      } @else {
+        $setting: append($setting, map_get($utl-content-body-font-and-margin-settings-base, $p));
+      }
+    }
+    @include font_exclude_first_and_last_margin(nth($setting, 1), nth($setting, 2), nth($setting, 3), $el, nth($setting, 4));
+  }
+
+  a:not(.wp-block-button__link) {
+    //
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  .wp-block-button {
+    @include margin_top_bottom(map_get($utl-content-body-default-margin-tb, pc), map_get($utl-content-body-default-margin-tb, sp));
+  }
+
+  .wp-block-button__link {
+    @include margin_top_bottom(harm(2) harm(2), harm_sp(2) harm_sp(2));
+    @include font(button-01);
+    @extend %button;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  ul {
+    @include margin_top_bottom(harm(2), harm_sp(2));
+    padding-left: rem(20);
+  }
+
+  ol {
+    @include margin_top_bottom(harm(2), harm_sp(2));
+    padding-left: rem(20);
+  }
+
+  li {
+    position: relative;
+    &:before {
+      display: block;
+      position: absolute;
+    }
+  }
+
+  ul > li {
+    &:before {
+      content: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%208.5%208.5%22%3E%3Cg%20id%3D%22%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC_2%22%20data-name%3D%22%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%202%22%3E%3Cg%20id%3D%22%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC_1-2%22%20data-name%3D%22%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%201%22%3E%3Cpath%20d%3D%22M4.25%2C8.5A4.25%2C4.25%2C0%2C1%2C1%2C8.5%2C4.25%2C4.26%2C4.26%2C0%2C0%2C1%2C4.25%2C8.5Z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+      width: rem(6);
+      left: rem(-15);
+      transform: translateY(rem(-2.5));
+    }
+  }
+
+  ol > li {
+    &:before {
+      width: fit-content;
+      left: rem_harm();
+    }
+    @for $i from 1 through 30 {
+      &:nth-child(#{$i}):before {
+        content: "#{$i}.";
+      }
+    }
+  }
+
+  blockquote {
+    @include margin_top_bottom(harm(2), harm_sp(2));
+    padding: rem_harm(4) rem_wharm();
+    background: $gray-light;
+    p {
+      @include font(base);
+    }
+    cite {
+      @include font(caption, harm(6) 0, harm_sp(6) 0);
+      display: block;
+      color: $gray;
+    }
+  }
+
+  .wp-block-table {
+    @include margin_top_bottom(harm(2), harm_sp(2));
+    max-width: 100%;
+    overflow-x: scroll;
+  }
+
+  table {
+    min-width: rem_wharm(1);
+    @include sp() {
+      min-width: 100%;
+    }
+  }
+
+  tr {
+    border-top: 1px solid $gray;
+    border-left: 1px solid $gray;
+  }
+
+  thead tr {
+    background: $gray-light;
+  }
+
+  th, td {
+    padding: rem_harm() rem(20);
+    border-bottom: 1px solid $gray;
+    border-right: 1px solid $gray;
+    min-width: rem_harm(1);
+    @include sp() {
+      padding: rem_harm() rem_wharm(6);
+      min-width: rem_wharm(1);
+    }
+  }
+
+  figcaption {
+    @include font(caption, harm() 0, harm() 0);
+    display: block;
+    color: $gray;
+  }
+
+  .wp-block-separator {
+    @include margin_top_bottom(harm(2), harm_sp(2));
+    height: 1px;
+    background-color: $gray;
+  }
+}

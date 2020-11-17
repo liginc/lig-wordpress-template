@@ -1,0 +1,4 @@
+.button__link {
+  @include font(button-01);
+  @extend %button;
+}

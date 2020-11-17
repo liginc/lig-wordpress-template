@@ -1,0 +1,13 @@
+//scroll top
+.scroll-top {
+  //
+}
+
+.scroll-top__link {
+  @extend %dummy-icon;
+}
+
+.scroll-top__svg {
+  transform: rotate(270deg);
+  @extend %dummy-icon;
+}

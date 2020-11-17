@@ -1,0 +1,29 @@
+//header
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.header__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__title {
+  //
+}
+
+.header-title__link {
+  display: block;
+  height: 100%;
+  width: $dummy_size;
+}
+
+.header-title__logo {
+  max-width: 100%;
+  height: auto;
+}

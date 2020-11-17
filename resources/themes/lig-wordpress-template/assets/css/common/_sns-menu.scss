@@ -1,0 +1,11 @@
+.sns-menu{
+  //
+}
+
+.sns-menu__list {
+  display: flex;
+}
+
+.sns-menu__svg {
+  @extend %dummy-icon;
+}

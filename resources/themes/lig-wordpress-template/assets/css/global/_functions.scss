@@ -1,0 +1,75 @@
+@function bp($mode:break) {
+  $bp: map_get($break-point, $mode);
+  @return $bp;
+}
+
+@function bp_next($mode) {
+  $flg: false;
+  $rtn: false;
+  @each $k, $v in $break-point {
+    @if ($flg == true) {
+      $rtn: $k;
+      $flg: false;
+    }
+    @if ($k == $mode) {
+      $flg: true;
+    }
+  }
+  @return $rtn;
+}
+
+@function harm($coefficient: $font-coefficient) {
+  @return $base-font-size-pc * $font-coefficient / $coefficient;
+}
+
+@function harm_sp($coefficient: $font-coefficient) {
+  @return $base-font-size-sp * $font-coefficient / $coefficient;
+}
+
+@function wharm($coefficient: $font-coefficient) {
+  @return $base-width-pc * $font-coefficient / $coefficient;
+}
+
+@function wharm_sp($coefficient: $font-coefficient) {
+  @return $base-width-sp * $font-coefficient / $coefficient;
+}
+
+@function vw($size, $mode:pc) {
+  @return $size / bp($mode) * 100vw;
+}
+
+@function vh($size,$height) {
+  @return $size / $height * 100vh;
+}
+
+@function vw_sp($size,$mode:sp) {
+  @return $size / bp(sp) * 100vw;
+}
+
+@function vh_sp($size,$height) {
+  @return $size / $height * 100vh * 553/667;
+}
+
+@function rem($size,$mode:pc) {
+  @return $size / map-get($base-font-sizes, $mode) * 1rem;
+}
+
+@function rem_sp($size,$mode:sp) {
+  @return $size / map-get($base-font-sizes, $mode) * 1rem;
+}
+
+@function rem_harm($i:$font-coefficient) {
+  @return rem(harm($i));
+}
+
+@function rem_harm_sp($i:$font-coefficient) {
+  @return rem_sp(harm_sp($i));
+}
+
+@function rem_wharm($i:$font-coefficient) {
+  @return rem(wharm($i));
+}
+
+@function rem_wharm_sp($i:$font-coefficient) {
+  @return rem_sp(wharm_sp($i));
+}

@@ -1,0 +1,33 @@
+//layout
+$base_grid: 80;
+$dummy_size: #{$base_grid}px;
+
+$base-width-pc: 80;
+$base-width-sp: 60;
+
+$main-layout-padding-pc: 80;
+$main-layout-padding-sp: 20;
+
+$header-height-pc: 120;
+$header-height-sp: 80;
+$header-height-pc--scrolled: 100;
+$header-height-sp--scrolled: 60;
+
+$header-menu-pc-margin-right: 40;
+$header-menu-sp-margin-bottom: 20;
+
+$burger-size: 40;
+
+$footer-padding-top-pc: 60;
+$footer-padding-top-sp: 30;
+$footer-padding-bottom-pc: 120;
+$footer-padding-bottom-sp: 100;
+
+$footer-menu-pc-margin-right: 30;
+$footer-menu-sp-margin-bottom: 20;
+
+$scroll-top-height-pc: 80;
+$scroll-top-height-sp: 60;
+
+$mv-height-pc: 350;
+$mv-height-sp: 300;

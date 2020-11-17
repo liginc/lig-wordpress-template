@@ -1,0 +1,40 @@
+//pagination
+.pagination {
+  //
+}
+
+.pagination__list {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__item {
+  //
+  &--prev {
+    //
+  }
+  &--after {
+    //
+  }
+}
+
+.pagination__arrow {
+  @extend %dummy-icon;
+  &--prev {
+    transform: rotate(180deg);
+  }
+  &--after {
+    //
+  }
+}
+
+.pagination__link {
+  display: block;
+}
+
+.pagination__number {
+  //
+  &.is-current {
+    text-decoration: underline;
+  }
+}

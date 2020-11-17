@@ -1,0 +1,136 @@
+//fonts
+html {
+  @each $mode, $value in $base-font-sizes {
+    @if ($mode == max) {
+      @include mq_min($mode) {
+        font-size: #{$value}px;
+      }
+    }
+    @if ($mode != sp-min and $mode != tab-min) {
+      $min: bp_next($mode);
+      @include mq_between($min, $mode) {
+        font-size: #{$value}px;
+      }
+    } @else if ($mode == tab-min) {
+      @include mq_between(sp-large, $mode) {
+        font-size: #{$value}px;
+      }
+    } @else if ($mode == sp-min) {
+      @include mq_max($mode) {
+        font-size: #{$value}px;
+      }
+    }
+  }
+}
+
+@mixin font($type:base,$margin-pc:0,$margin-sp:0,$only-margin:false) {
+  $coefficient: $base-font-coefficient;
+
+  @if (length($margin-pc) == 1) {
+    $margin-pc: (nth($margin-pc, 1), nth($margin-pc, 1));
+  }
+  @if (length($margin-sp) == 1) {
+    $margin-sp: (nth($margin-sp, 1), nth($margin-sp, 1));
+  }
+
+  $data: map_get($font, $type);
+  $line-height: 1;
+  $font-size-px: 0;
+
+  @each $type, $value in $data {
+
+    @if (map_has_key($value, font-family)) {
+      $coefficient: map_get(map_get($font-family, map_get($value, font-family)), coefficient);
+      @if ($type == pc) {
+        font-family: map_get(map_get($font-family, map_get($value, font-family)), font-family);
+      }
+    }
+
+    @if (map_has_key($value, font-size)) {
+      $font-size-px: map_get($value, font-size);
+    } @else if (map_has_key($value, font-size-harm)) {
+      @if ($type == pc) {
+        $font-size-px: harm(map_get($value, font-size-harm));
+      } @else {
+        $font-size-px: harm_sp(map_get($value, font-size-harm));
+      }
+    } @else if ($type == pc) {
+      $font-size-px: $base-font-size-pc;
+    } @else {
+      $font-size-px: $base-font-size-sp;
+    }
+
+    @if (map_has_key($value, line-height)) {
+      $line-height: map_get($value, line-height);
+      line-height: $line-height;
+    } @else if (map_has_key($value, line-height-harm)) {
+      @if ($type == pc) {
+        $line-height: harm(map_get($value, line-height-harm)) / $font-size-px;
+        line-height: $line-height;
+      } @else {
+        $line-height: harm_sp(map_get($value, line-height-harm)) / $font-size-px;
+        @include sp() {
+          line-height: $line-height;
+        }
+      }
+    } @else if($type == sp) {
+      //font-sizeを中心に再計算
+    }
+
+    @if ($only-margin == false) {
+      @if ($type == pc and $font-size-px != $base-font-size-pc) {
+        font-size: rem($font-size-px);
+      } @else if ($type == sp and $font-size-px != $base-font-size-sp) {
+        @include sp() {
+          font-size: rem_sp($font-size-px);
+        }
+      }
+
+      @each $property in map_keys($value) {
+        $v: map_get($value, $property);
+        @if ($property != font-family and $property != font-size and $property != font-size-harm and $property != line-height and $property != line-height-harm) {
+          @if ($type == pc) {
+            #{$property}: $v;
+          } @else {
+            @include sp() {
+              #{$property}: $v;
+            }
+          }
+        }
+      }
+    }
+
+    $difference: ($font-size-px * $line-height) - $font-size-px;
+    @if ($type == pc) {
+      margin-top: rem(-1*$difference*nth($coefficient,1)+nth($margin-pc,1));
+      margin-bottom: rem(-1*$difference*nth($coefficient,2)+nth($margin-pc,2));
+    } @else {
+      @include sp() {
+        margin-top: rem_sp(-1*$difference*nth($coefficient,1)+nth($margin-sp,1));
+        margin-bottom: rem_sp(-1*$difference*nth($coefficient,2)+nth($margin-sp,2));
+      }
+    }
+  }
+}
+
+@mixin font_exclude_first_and_last_margin($font-pattern:base,$margin-pc,$margin-sp,$el,$root:'.utl-content-body') {
+  @if (length($margin-pc) == 1) {
+    $margin-pc: (nth($margin-pc, 1), nth($margin-pc, 1));
+  }
+  @if (length($margin-sp) == 1) {
+    $margin-sp: (nth($margin-sp, 1), nth($margin-sp, 1));
+  }
+  #{$el} {
+    @include font($font-pattern, $margin-pc, $margin-sp);
+    @at-root #{$root} {
+      & > #{$el}:first-child {
+        @include font($font-pattern, 0 nth($margin-pc, 2), 0 nth($margin-sp, 2), true);
+      }
+    }
+    @at-root #{$root} {
+      & > #{$el}:last-child {
+        @include font($font-pattern, nth($margin-pc, 1) 0, nth($margin-sp, 1) 0, true);
+      }
+    }
+  }
+}
