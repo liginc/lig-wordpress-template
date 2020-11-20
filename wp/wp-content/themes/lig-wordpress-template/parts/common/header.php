@@ -76,11 +76,11 @@ $title_tag = is_front_page() ? 'h1' : 'span';
             </ul>
         </nav>
         <button id="burger" class="burger utl-only-sp utl-center">
-            <div class="burger__main">
-                <div class="burger__line burger__line--first"></div>
-                <div class="burger__line burger__line--second"></div>
-                <div class="burger__line burger__line--third"></div>
-            </div>
+            <span class="burger__main">
+                <span class="burger__line burger__line--first"></span>
+                <span class="burger__line burger__line--second"></span>
+                <span class="burger__line burger__line--third"></span>
+            </span>
         </button>
     </div>
 </header>
