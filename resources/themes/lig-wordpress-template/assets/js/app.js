@@ -3,9 +3,9 @@ import ViewportExtra from 'viewport-extra';
 import Menu from './module/menu';
 import SmoothScroll from './module/smooth-scroll';
 
-new ViewportExtra(375);
+new ViewportExtra(375)
 
-(function(){
+(function () {
     var ua = navigator.userAgent
 
     var sp = ua.indexOf('iPhone') > -1 ||
@@ -23,14 +23,13 @@ new ViewportExtra(375);
 window.addEventListener('load', function () {
     //Lazyload
     if (!('loading' in HTMLImageElement.prototype)) {
-        let images = document.querySelectorAll('img[loading="lazy"]');
-        new LazyLoad(images);
+        new LazyLoad(document.querySelectorAll('img[loading="lazy"]'))
     }
 
     //smooth scroll
-    new SmoothScroll().clickEvent();
+    new SmoothScroll().clickEvent()
 
     //menu
-    new Menu();
+    new Menu()
 
 });
