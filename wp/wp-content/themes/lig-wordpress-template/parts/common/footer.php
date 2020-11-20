@@ -12,7 +12,7 @@ $menu = [
     [
         'text' => NAME_HOME,
         'href' => URL_HOME,
-    ],
+    ],/*
     [
         'text' => NAME_ABOUT,
         'href' => URL_ABOUT,
@@ -40,7 +40,7 @@ $menu = [
     [
         'text' => NAME_PRIVACY,
         'href' => URL_PRIVACY,
-    ],
+    ],*/
 ]
 ?>
 <div id="scroll-top" class="scroll-top utl-main-layout utl-main-layout--wide">

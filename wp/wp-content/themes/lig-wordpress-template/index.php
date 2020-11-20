@@ -1,11 +1,12 @@
 <?php
+
 $article = [
     'taxonomy' => 'news-category',
     'modifier' => 'index-news'
 ];
 $news_more_button = [
     'text' => 'もっと見る',
-    'href' => URL_NEWS,
+    'href' => ''/*URL_NEWS*/,
     'modifier' => 'index-news'
 ];
 get_header();
