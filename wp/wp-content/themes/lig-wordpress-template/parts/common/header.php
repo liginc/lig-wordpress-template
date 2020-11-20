@@ -14,7 +14,7 @@ $menu = [
         'text' => NAME_HOME,
         'href' => URL_HOME,
         'is-current' => is_front_page(),
-    ],
+    ],/*
     [
         'text' => NAME_ABOUT,
         'href' => URL_ABOUT,
@@ -44,7 +44,7 @@ $menu = [
         'text' => NAME_CONTACT,
         'href' => URL_CONTACT,
         'is-current' => is_page('contact') || is_page('confirm') || is_page('complete'),
-    ],
+    ],*/
 ];
 
 $title_tag = is_front_page() ? 'h1' : 'span';
