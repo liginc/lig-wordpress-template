@@ -21,7 +21,7 @@
     ?>
     <?php
     if (!empty($tags)):
-        import_part('common/tag-list', ['tags' => $tags, 'modifier' => 'single-' . $post_type]);
+        import_part('tag-list', ['tags' => $tags, 'modifier' => 'single-' . $post_type]);
     endif;
     ?>
 </div>

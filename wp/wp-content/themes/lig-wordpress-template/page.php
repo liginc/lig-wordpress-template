@@ -25,11 +25,11 @@ $page_header = [
 ];
 
 get_header();
-import_part('common/mv', $mv);
-import_part('common/breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
+import_part('mv', $mv);
+import_part('breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
 ?>
     <div class="utl-main-layout utl-main-layout--under-layer utl-main-layout--narrow">
-        <?= import_part('common/page-header', $page_header) ?>
+        <?= import_part('page-header', $page_header) ?>
         <div class="page-body">
             <?= get_the_thumb_with_srcset_webp($post, 'single-body__thumb') ?>
             <div class="single-body__content utl-content-body">

@@ -32,7 +32,7 @@ $tags = (!empty($tag_taxonomy)) ? get_the_terms($post, $tag_taxonomy) : null;
             ?>
             <?php
             if (!empty($tags)):
-                import_part('common/tag-list', ['tags' => $tags, 'modifier' => $tag_taxonomy]);
+                import_part('tag-list', ['tags' => $tags, 'modifier' => $tag_taxonomy]);
             endif;
             ?>
             <?php /*<p class="article__excerpt">
