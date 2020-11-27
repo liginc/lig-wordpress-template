@@ -39,6 +39,6 @@ $tags = (!empty($tag_taxonomy)) ? get_the_terms($post, $tag_taxonomy) : null;
                 <?= $excerpt ?>
             </p> */ ?>
         </div>
-        <?= get_the_thumb_with_srcset_webp($post, 'article__thumb') ?>
+        <?= get_the_thumb_with_srcset_webp($post, 'article__thumb', 'min') ?>
     </a>
 </article>
