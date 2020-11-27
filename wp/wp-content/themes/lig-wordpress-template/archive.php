@@ -26,8 +26,8 @@ $article = [
     'modifier' => $queried_object->name
 ];
 get_header();
-import_part('common/mv', $mv);
-import_part('common/breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
+import_part('mv', $mv);
+import_part('breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
 ?>
     <div class="utl-main-layout utl-main-layout--under-layer">
         <?php
@@ -40,7 +40,7 @@ import_part('common/breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
                     ?>
                     <li class="archive__article-item">
                         <?php
-                        import_part('common/article', $article);
+                        import_part('article', $article);
                         ?>
                     </li>
                 <?php
@@ -49,7 +49,7 @@ import_part('common/breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
                 ?>
             </ul>
             <?php
-            import_part('common/pagination');
+            import_part('pagination');
         endif;
         ?>
     </div>

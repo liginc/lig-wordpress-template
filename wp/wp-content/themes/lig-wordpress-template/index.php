@@ -23,12 +23,12 @@ get_header();
                         <?php while (have_posts()): the_post(); ?>
                             <li class="index-news__item">
                                 <?php
-                                import_part('common/article', $article);
+                                import_part('article', $article);
                                 ?>
                             </li>
                         <?php endwhile; ?>
                     </ul>
-                    <?php import_part('common/button', $news_more_button) ?>
+                    <?php import_part('button', $news_more_button) ?>
                 </div>
             </section>
         <?php

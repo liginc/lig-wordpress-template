@@ -56,7 +56,7 @@ $menu = [
             <?= get_svg_sprite('logo') ?>
         </div>
         <div class="footer__sns-menu">
-            <?php import_part('common/sns-menu',['modifier' => 'footer__sns-menu']) ?>
+            <?php import_part('sns-menu',['modifier' => 'footer__sns-menu']) ?>
         </div>
         <nav class="footer-menu">
             <ul class="footer-menu__list">

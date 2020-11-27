@@ -35,11 +35,11 @@ $single_header = [
 ];
 
 get_header();
-import_part('common/mv', $mv);
-import_part('common/breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
+import_part('mv', $mv);
+import_part('breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
 ?>
     <div class="utl-main-layout utl-main-layout--under-layer utl-main-layout--narrow">
-        <?= import_part('common/single-header', $single_header) ?>
+        <?= import_part('single-header', $single_header) ?>
         <div class="single-body">
             <?= get_the_thumb_with_srcset_webp($post, 'single-body__thumb') ?>
             <div class="single-body__content utl-content-body">
@@ -47,7 +47,7 @@ import_part('common/breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
                 the_content();
                 ?>
             </div>
-            <?= import_part('common/sns-share') ?>
+            <?= import_part('sns-share') ?>
         </div>
     </div>
 <?php
