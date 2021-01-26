@@ -1,15 +1,6 @@
 <?php
 $post_type_object = get_post_type_object($post->post_type);
 
-$mv = [
-    'img' => $post->post_type.'/mv.jpg',
-    'jp' => 'お知らせ',
-    'en' => $post_type_object->label,
-    'h1' => false,
-    'description' => '〇〇のお知らせです。',
-    'modifier' => 'single-'.$post->post_type
-];
-
 $breadcrumbs = [
     [
         'text' => NAME_HOME,
@@ -35,20 +26,11 @@ $single_header = [
 ];
 
 get_header();
-import_part('mv', $mv);
 import_part('breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
 ?>
-    <div class="utl-main-layout utl-main-layout--under-layer utl-main-layout--narrow">
-        <?= import_part('single-header', $single_header) ?>
-        <div class="single-body">
-            <?= get_the_thumb_with_srcset_webp($post, 'single-body__thumb') ?>
-            <div class="single-body__content utl-content-body">
-                <?php
-                the_content();
-                ?>
-            </div>
-            <?= import_part('sns-share') ?>
-        </div>
-    </div>
+<?= import_part('single-header', $single_header) ?>
+<?= get_the_thumb_with_srcset_webp($post, 'single-body__thumb') ?>
+<?php the_content(); ?>
+<?= import_part('sns-share') ?>
 <?php
 get_footer();

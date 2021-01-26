@@ -1,0 +1,29 @@
+.is-only-pc-show {
+  @include sp() {
+    display: none;
+  }
+}
+
+.is-only-sp-show {
+  @include pc() {
+    display: none;
+  }
+}
+
+//.is-opend {
+//}
+//
+//.is-closed {
+//}
+//
+//.is-current {
+//}
+//
+//.is-scrolled {
+//}
+
+
+
+
+
+

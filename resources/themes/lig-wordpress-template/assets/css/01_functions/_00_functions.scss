@@ -1,0 +1,20 @@
+@function bp($mode:break) {
+  $bp: map_get($break-point, $mode);
+  @return $bp;
+}
+
+@function vw($size, $mode:pc) {
+  @return $size / bp($mode) * 100vw;
+}
+
+@function vh($size,$height) {
+  @return $size / $height * 100vh;
+}
+
+@function vw_sp($size,$mode:sp) {
+  @return $size / bp(sp) * 100vw;
+}
+
+@function vh_sp($size,$height) {
+  @return $size / $height * 100vh * 553/667;
+}

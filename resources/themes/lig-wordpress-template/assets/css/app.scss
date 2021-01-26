@@ -1,68 +1,21 @@
-//constants
-@import './constants/break-point';
-@import './constants/color';
-@import './constants/easing';
-@import './constants/font';
-@import './constants/layout';
-
 //npm library
 @import '../../../../../node_modules/sanitize.css/sanitize.css';
 @import '../../../../../node_modules/reset-css/reset.css';
 
-//global
-@import './global/functions';
-@import './global/mixins';
-@import './global/reset-extra';
+//constants
+@import '00_constants/*';
+
+//functions
+@import '01_functions/*';
 
 //settings
-@import './settings/base';
-@import './settings/extends';
-@import './settings/fonts';
-@import './settings/animation';
-@import './settings/utility';
+@import '02_settings/*';
 
-//common
-@import './common/header';
-@import './common/header-menu';
-@import './common/burger';
-@import './common/footer';
-@import './common/footer-menu';
-@import './common/sns-menu';
-@import './common/scroll-top';
-@import './common/main';
-@import './common/mv';
-@import './common/breadcrumbs';
-@import './common/archive';
-@import './common/article';
-@import './common/pagination';
-@import './common/single-header';
-@import './common/single-body';
-@import './common/sns-share';
-@import './common/button';
+//parts
+@import '03_parts/**/*';
 
+//pages
+@import '04_pages/**/*';
 
-//contents
-
-//index
-@import './contents/index/index';
-@import './contents/index/index-mv';
-
-//about
-@import './contents/about/about';
-
-//service
-@import './contents/service/service';
-
-//news
-@import './contents/news/news';
-
-//case
-@import './contents/case/case';
-
-//recruit
-@import './contents/recruit/recruit';
-
-//contact
-@import './contents/contact/contact';
-@import './contents/contact/contact-form';
-@import './contents/contact/contact-nav';
+//utilities
+@import '99_utilities/*';

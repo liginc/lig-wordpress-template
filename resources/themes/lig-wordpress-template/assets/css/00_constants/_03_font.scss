@@ -1,0 +1,32 @@
+$font-family: (
+        helvetica: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+        noto-sans: '"Noto Sans JP", sans-serif',
+);
+
+$font: (
+        base: (
+                pc: (
+                        font-family: noto-sans,
+                        font-size: 18px,
+                        font-weight: 400,
+                        line-height: 1,
+                        letter-spacing: .03em,
+                ),
+                sp: (
+                        font-size: 16,
+                )
+        ),
+        //
+        //SAMPLE
+        //heaading-1: (
+        //        pc: (
+        //                font-size: 32px,
+        //                font-weight: 700,
+        //                line-height: 1.4,
+        //                letter-spacing: 1em,
+        //        ),
+        //        sp: (
+        //                font-size: 24,
+        //        )
+        //),
+);
