@@ -52,18 +52,47 @@
   }
 }
 
-@mixin pc() {
-  @include mq_min() {
+@mixin pc($mode:break) {
+  @include mq_min($mode) {
     @content;
   }
 }
 
-@mixin sp() {
-  @include mq_max() {
+@mixin sp($mode:break) {
+  @include mq_max($mode) {
     @content;
   }
 }
 
+
+// pseudo
+@mixin pseudo($mode:before,$root:&) {
+  #{$root}:#{$mode} {
+    content: "";
+    @content;
+  }
+}
+
+@mixin before($root:&) {
+  @include pseudo(before,$root) {
+    @content;
+  }
+}
+
+@mixin after($root:&) {
+  @include pseudo(after,$root) {
+    @content;
+  }
+}
+
+@mixin before_after($root:&) {
+  @include before($root) {
+    @content;
+  }
+  @include after($root) {
+    @content;
+  }
+}
 
 
 
