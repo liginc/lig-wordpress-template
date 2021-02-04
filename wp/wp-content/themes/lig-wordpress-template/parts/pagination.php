@@ -7,8 +7,7 @@ $pagination_array = get_pagination_array($range, $add_first_and_last);
 
 if (!$pagination_array) return;
 ?>
-
-<nav class="pagination">
+<nav id="pagination" class="pagination">
     <ul class="pagination__list">
         <?php
         if ($pagination_array['prev']):

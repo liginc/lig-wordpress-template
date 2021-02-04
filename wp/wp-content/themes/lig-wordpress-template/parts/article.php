@@ -7,13 +7,14 @@
  * 'modifier => string(Optional)
  */
 $post = (!empty($post)) ? $post : $GLOBALS['post'];
-$title = $post->post_title;
+$title = get_the_title();
 $datetime = get_the_date('Y-m-d H:i:s', $post);
 $date = get_the_date('Y.m.d', $post);
 $href = get_permalink($post);
 $cat = (!empty($taxonomy)) ? get_first_term($post->ID, $taxonomy) : null;
 $tags = (!empty($tag_taxonomy)) ? get_the_terms($post, $tag_taxonomy) : null;
-//$excerpt = mb_substr(trim(strip_tags($post->post_content)), 0, 200);
+$excerpt = mb_substr(trim(strip_tags($post->post_content)), 0, 200);
+$modifier = (empty($modifier)) ? null: $modifier;
 
 ?>
 <article class="<?= get_modified_class('article', $modifier) ?>">
@@ -35,9 +36,9 @@ $tags = (!empty($tag_taxonomy)) ? get_the_terms($post, $tag_taxonomy) : null;
                 import_part('tag-list', ['tags' => $tags, 'modifier' => $tag_taxonomy]);
             endif;
             ?>
-            <?php /*<p class="article__excerpt">
+            <p class="article__excerpt">
                 <?= $excerpt ?>
-            </p> */ ?>
+            </p>
         </div>
         <?= get_the_thumb_with_srcset_webp($post, 'article__thumb') ?>
     </a>

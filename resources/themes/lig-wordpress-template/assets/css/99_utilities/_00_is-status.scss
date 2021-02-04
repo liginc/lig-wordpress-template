@@ -1,0 +1,11 @@
+.is-only-pc-show {
+  @include sp() {
+    display: none;
+  }
+}
+
+.is-only-sp-show {
+  @include pc() {
+    display: none;
+  }
+}

@@ -1,0 +1,35 @@
+$font-family: (
+        japanese-system: '"Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif',
+        yugo: 'BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif',
+        yugo-bold: 'BlinkMacSystemFont, Roboto, "Segoe UI semibold", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic", "Segoe UI", Verdana, Meiryo, sans-serif',
+        helvetica: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+        noto-sans: '"Noto Sans JP", sans-serif',
+);
+
+$font: (
+        base: (
+                pc: (
+                        font-family: japanese-system,
+                        font-size: 18px,
+                        font-weight: 400,
+                        line-height: 1,
+                        letter-spacing: .03em,
+                ),
+                sp: (
+                        font-size: 16,
+                )
+        ),
+        //
+        //SAMPLE
+        //heaading-1: (
+        //        pc: (
+        //                font-size: 32px,
+        //                font-weight: 700,
+        //                line-height: 1.4,
+        //                letter-spacing: 1em,
+        //        ),
+        //        sp: (
+        //                font-size: 24,
+        //        )
+        //),
+);
