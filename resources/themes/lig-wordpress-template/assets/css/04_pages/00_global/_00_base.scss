@@ -1,5 +1,5 @@
-body {
-  //
+html {
+  @include font();
 }
 
 [data-svg-sprite] {
