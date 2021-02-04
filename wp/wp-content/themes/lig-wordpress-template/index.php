@@ -6,11 +6,11 @@ $article = [
     'modifier' => 'index'
 ];
 
-$more_button = [
+$more_button = ((int)$wp_query->max_num_pages > 1) ? [
     'text' => '次の10件を見る',
     'href' => '#',
     'modifier' => ''
-];
+] : null;
 
 get_header();
 ?>
@@ -23,6 +23,6 @@ get_header();
             </li>
         <?php endwhile; ?>
     </ul>
-<?php import_part('button', $more_button) ?>
+<?php if (!empty($more_button)) import_part('button', $more_button) ?>
 <?php
 get_footer();
