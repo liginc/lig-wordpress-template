@@ -6,16 +6,16 @@ $article = [
     'modifier' => 'index'
 ];
 
-$more_button = [
+$more_button = ((int)$wp_query->max_num_pages > 1) ? [
     'text' => '次の10件を見る',
     'href' => '#',
     'modifier' => ''
-];
+] : null;
 
 get_header();
 ?>
     <ul class="article-list">
-        <?php if (have_post()) while (have_posts()): the_post(); ?>
+        <?php if (have_posts()) while (have_posts()): the_post(); ?>
             <li class="article-list__item">
                 <?php
                 import_part('article', array_merge($article, ['post' => $post]));
@@ -23,6 +23,6 @@ get_header();
             </li>
         <?php endwhile; ?>
     </ul>
-<?php import_part('button', $more_button) ?>
+<?php if (!empty($more_button)) import_part('button', $more_button) ?>
 <?php
 get_footer();

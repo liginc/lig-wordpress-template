@@ -6,7 +6,7 @@
  */
 if (empty($tags)) return;
 $link = (empty($link)) ? null : $link;
-$modifier = (empty($modifier)) ? null : $modifier;
+$modifier = (empty($modifier)) ? "" : $modifier;
 ?>
 <div class="<?= get_modified_class('tag-list', $modifier) ?>">
     <ul class="tag-list__list">
