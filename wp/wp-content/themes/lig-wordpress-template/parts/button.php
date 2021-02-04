@@ -6,7 +6,7 @@
  * 'is_blank' => bool,
  * 'modifier' => ''
  */
-https://github.com/liginc/lig-wordpress-template/pull/53 = (empty($is_blank)) ? "": $is_blank;
+$is_blank = (empty($is_blank)) ? "": $is_blank;
 $modifier = (empty($modifier)) ? "": $modifier;
 ?>
 <div class="<?= get_modified_class('button', $modifier) ?>">
