@@ -14,7 +14,7 @@ $href = get_permalink($post);
 $cat = (!empty($taxonomy)) ? get_first_term($post->ID, $taxonomy) : null;
 $tags = (!empty($tag_taxonomy)) ? get_the_terms($post, $tag_taxonomy) : null;
 $excerpt = mb_substr(trim(strip_tags($post->post_content)), 0, 200);
-$modifier = (empty($modifier)) ? null: $modifier;
+$modifier = (empty($modifier)) ? "": $modifier;
 
 ?>
 <article class="<?= get_modified_class('article', $modifier) ?>">
