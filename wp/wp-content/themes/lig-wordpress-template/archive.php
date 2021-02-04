@@ -11,10 +11,26 @@ $breadcrumbs = [
         'href' => get_post_type_archive_link($queried_object->name)
     ],
 ];
+
+$article = [
+    'taxonomy' => 'category',
+    'tag_taxonomy' => 'post_tag',
+    'modifier' => 'index'
+];
+
 get_header();
+
 import_part('breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
 ?>
-<?php import_part('article-list',['query' => $wp_query]) ?>
+    <ul class="article-list">
+        <?php if (have_post()) while (have_posts()): the_post(); ?>
+            <li class="article-list__item">
+                <?php
+                import_part('article', array_merge($article, ['post' => $post]));
+                ?>
+            </li>
+        <?php endwhile; ?>
+    </ul>
 <?php import_part('pagination') ?>
 <?php
 get_footer();

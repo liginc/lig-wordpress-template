@@ -2,7 +2,7 @@
 /**
  * args:
  * 'text' => 'もっと見る',
- * 'href' => URL_NEWS,
+ * 'href' => URL_HOME,
  * 'is_blank' => bool,
  * 'modifier' => ''
  */

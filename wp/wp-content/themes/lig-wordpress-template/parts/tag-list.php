@@ -5,6 +5,8 @@
  * 'modifier' => string,
  */
 if (empty($tags)) return;
+$link = (empty($link)) ? null : $link;
+$modifier = (empty($modifier)) ? null : $modifier;
 ?>
 <div class="<?= get_modified_class('tag-list', $modifier) ?>">
     <ul class="tag-list__list">
@@ -21,7 +23,7 @@ if (empty($tags)) return;
                 <?php
                 else:
                     ?>
-                    <spana class="tag-list__link">
+                    <spana class="tag-list__text">
                         <?= $tag->name ?>
                     </spana>
                 <?php

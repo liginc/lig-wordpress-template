@@ -1,17 +1,28 @@
 <?php
 
 $article = [
-    'taxonomy' => 'news-category',
-    'modifier' => 'index-news'
+    'taxonomy' => 'category',
+    'tag_taxonomy' => 'post_tag',
+    'modifier' => 'index'
 ];
-//$news_more_button = [
-//    'text' => 'もっと見る',
-//    'href' => URL_HOME,
-//    'modifier' => ''
-//];
+
+$more_button = [
+    'text' => '次の10件を見る',
+    'href' => '#',
+    'modifier' => ''
+];
+
 get_header();
 ?>
-<?php import_part('article-list',['query' => $wp_query]) ?>
-<?php /* import_part('button', $news_more_button) */ ?>
+    <ul class="article-list">
+        <?php if (have_post()) while (have_posts()): the_post(); ?>
+            <li class="article-list__item">
+                <?php
+                import_part('article', array_merge($article, ['post' => $post]));
+                ?>
+            </li>
+        <?php endwhile; ?>
+    </ul>
+<?php import_part('button', $more_button) ?>
 <?php
 get_footer();

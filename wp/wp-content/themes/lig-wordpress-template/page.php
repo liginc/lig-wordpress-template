@@ -18,8 +18,6 @@ $page_header = [
 get_header();
 import_part('breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
 ?>
-<?= import_part('page-header', $page_header) ?>
-<?= get_the_thumb_with_srcset_webp($post, 'single-body__thumb') ?>
 <?php the_content() ?>
 <?php
 get_footer();
