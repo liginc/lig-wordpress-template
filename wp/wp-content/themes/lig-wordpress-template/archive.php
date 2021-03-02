@@ -23,7 +23,7 @@ get_header();
 import_part('breadcrumbs', ['breadcrumbs' => $breadcrumbs]);
 ?>
     <ul class="article-list">
-        <?php if (have_post()) while (have_posts()): the_post(); ?>
+        <?php if (have_posts()) while (have_posts()): the_post(); ?>
             <li class="article-list__item">
                 <?php
                 import_part('article', array_merge($article, ['post' => $post]));
