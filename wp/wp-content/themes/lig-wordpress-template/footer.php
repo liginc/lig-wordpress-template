@@ -1,4 +1,3 @@
-</main>
 <?php
 import_part('footer');
 wp_footer();
