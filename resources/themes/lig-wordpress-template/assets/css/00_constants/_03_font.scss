@@ -7,6 +7,8 @@ $font-family: (
 );
 
 $font: (
+        // baseの設定はhtml要素に適用されます
+        // サイトのベースになる設定をしてください
         base: (
                 pc: (
                         font-family: japanese-system,
@@ -16,11 +18,11 @@ $font: (
                         letter-spacing: .03em,
                 ),
                 sp: (
-                        font-size: 16,
+                        font-size: 16px,
                 )
         ),
-        //
-        //SAMPLE
+        // 各フォントの設定を配列にセットします
+        // baseと同じ場合はプロパティを省略できます
         //heaading-1: (
         //        pc: (
         //                font-size: 32px,
@@ -29,7 +31,7 @@ $font: (
         //                letter-spacing: 1em,
         //        ),
         //        sp: (
-        //                font-size: 24,
+        //                font-size: 24px,
         //        )
         //),
 );
