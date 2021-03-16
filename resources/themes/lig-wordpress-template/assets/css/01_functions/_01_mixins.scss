@@ -96,28 +96,27 @@
 //font
 @mixin font($type:base) {
   $target: map_get($font, $type);
-  $target-pc: if(map_has_key($target, pc), map_get($target, pc), null);
   $target-sp: if(map_has_key($target, sp), map_get($target, sp), null);
 
-  @if (map_has_key($target-pc, font-family)) {
-    $target-pc-font-family: map_get($target-pc, font-family);
-    font-family: unquote(map_get($font-family, map_get($target-pc, font-family)));
+  @if (map_has_key($target, font-family)) {
+    $target-font-family: map_get($target, font-family);
+    font-family: unquote(map_get($font-family, map_get($target, font-family)));
   }
-  @if (map_has_key($target-pc, font-size)) {
-    $target-pc-font-size: map_get($target-pc, font-size);
-    font-size: map_get($target-pc, font-size);
+  @if (map_has_key($target, font-size)) {
+    $target-font-size: map_get($target, font-size);
+    font-size: map_get($target, font-size);
   }
-  @if (map_has_key($target-pc, font-weight)) {
-    $target-pc-font-weight: map_get($target-pc, font-weight);
-    font-weight: map_get($target-pc, font-weight);
+  @if (map_has_key($target, font-weight)) {
+    $target-font-weight: map_get($target, font-weight);
+    font-weight: map_get($target, font-weight);
   }
-  @if (map_has_key($target-pc, line-height)) {
-    $target-pc-line-height: map_get($target-pc, line-height);
-    line-height: map_get($target-pc, line-height);
+  @if (map_has_key($target, line-height)) {
+    $target-line-height: map_get($target, line-height);
+    line-height: map_get($target, line-height);
   }
-  @if (map_has_key($target-pc, letter-spacing)) {
-    $target-pc-letter-spacing: map_get($target-pc, letter-spacing);
-    letter-spacing: map_get($target-pc, letter-spacing);
+  @if (map_has_key($target, letter-spacing)) {
+    $target-letter-spacing: map_get($target, letter-spacing);
+    letter-spacing: map_get($target, letter-spacing);
   }
 
   @if ($target-sp != null) {
