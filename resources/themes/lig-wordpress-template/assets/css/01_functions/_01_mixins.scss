@@ -120,34 +120,36 @@
     letter-spacing: map_get($target-pc, letter-spacing);
   }
 
-  @if (map_has_key($target-sp, font-family)) {
-    $target-sp-font-family: map_get($target-sp, font-family);
-    @include sp() {
-      font-family: unquote(map_get($font-family, map_get($target-sp, font-family)));
+  @if ($target-sp != null) {
+    @if (map_has_key($target-sp, font-family)) {
+      $target-sp-font-family: map_get($target-sp, font-family);
+      @include sp() {
+        font-family: unquote(map_get($font-family, map_get($target-sp, font-family)));
+      }
     }
-  }
-  @if (map_has_key($target-sp, font-size)) {
-    $target-sp-font-size: map_get($target-sp, font-size);
-    @include sp() {
-      font-size: map_get($target-sp, font-size);
+    @if (map_has_key($target-sp, font-size)) {
+      $target-sp-font-size: map_get($target-sp, font-size);
+      @include sp() {
+        font-size: map_get($target-sp, font-size);
+      }
     }
-  }
-  @if (map_has_key($target-sp, font-weight)) {
-    $target-sp-font-weight: map_get($target-sp, font-weight);
-    @include sp() {
-      font-weight: map_get($target-sp, font-weight);
+    @if (map_has_key($target-sp, font-weight)) {
+      $target-sp-font-weight: map_get($target-sp, font-weight);
+      @include sp() {
+        font-weight: map_get($target-sp, font-weight);
+      }
     }
-  }
-  @if (map_has_key($target-sp, line-height)) {
-    $target-sp-line-height: map_get($target-sp, line-height);
-    @include sp() {
-      line-height: map_get($target-sp, line-height);
+    @if (map_has_key($target-sp, line-height)) {
+      $target-sp-line-height: map_get($target-sp, line-height);
+      @include sp() {
+        line-height: map_get($target-sp, line-height);
+      }
     }
-  }
-  @if (map_has_key($target-sp, letter-spacing)) {
-    $target-sp-letter-spacing: map_get($target-sp, letter-spacing);
-    @include sp() {
-      letter-spacing: map_get($target-sp, letter-spacing);
+    @if (map_has_key($target-sp, letter-spacing)) {
+      $target-sp-letter-spacing: map_get($target-sp, letter-spacing);
+      @include sp() {
+        letter-spacing: map_get($target-sp, letter-spacing);
+      }
     }
   }
 }
