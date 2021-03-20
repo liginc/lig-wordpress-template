@@ -64,7 +64,6 @@
   }
 }
 
-
 // pseudo
 @mixin pseudo($mode:before,$root:&) {
   #{$root}:#{$mode} {
@@ -74,13 +73,13 @@
 }
 
 @mixin before($root:&) {
-  @include pseudo(before,$root) {
+  @include pseudo(before, $root) {
     @content;
   }
 }
 
 @mixin after($root:&) {
-  @include pseudo(after,$root) {
+  @include pseudo(after, $root) {
     @content;
   }
 }
@@ -94,142 +93,61 @@
   }
 }
 
-
-
 //font
 @mixin font($type:base) {
+  $target: map_get($font, $type);
+  $target-sp: if(map_has_key($target, sp), map_get($target, sp), null);
 
-  //baseのプロパティを取得
-  $base: map_get($font, base);
-  $base-pc: map_get($base, pc);
-  $base-sp: map_get($base, sp);
+  @if (map_has_key($target, font-family)) {
+    $target-font-family: map_get($target, font-family);
+    font-family: unquote(map_get($font-family, map_get($target, font-family)));
+  }
+  @if (map_has_key($target, font-size)) {
+    $target-font-size: map_get($target, font-size);
+    font-size: map_get($target, font-size);
+  }
+  @if (map_has_key($target, font-weight)) {
+    $target-font-weight: map_get($target, font-weight);
+    font-weight: map_get($target, font-weight);
+  }
+  @if (map_has_key($target, line-height)) {
+    $target-line-height: map_get($target, line-height);
+    line-height: map_get($target, line-height);
+  }
+  @if (map_has_key($target, letter-spacing)) {
+    $target-letter-spacing: map_get($target, letter-spacing);
+    letter-spacing: map_get($target, letter-spacing);
+  }
 
-  $base-pc-font-family: map_get($base-pc, font-family);
-  $base-pc-font-size: map_get($base-pc, font-size);
-  $base-pc-font-weight: map_get($base-pc, font-weight);
-  $base-pc-line-height: map_get($base-pc, line-height);
-  $base-pc-letter-spacing: map_get($base-pc, letter-spacing);
-
-  $base-sp-font-family: if(map_has_key($base-sp, font-family), map_get($base-sp, font-family), $base-pc-font-family);
-  $base-sp-font-size: if(map_has_key($base-sp, font-size), map_get($base-sp, font-size), $base-pc-font-size);
-  $base-sp-font-weight: if(map_has_key($base-sp, font-weight), map_get($base-sp, font-weight), $base-pc-font-weight);
-  $base-sp-line-height: if(map_has_key($base-sp, line-height), map_get($base-sp, line-height), $base-pc-line-height);
-  $base-sp-letter-spacing: if(map_has_key($base-sp, letter-spacing), map_get($base-sp, letter-spacing), $base-pc-letter-spacing);
-
-  @if( $type == base ) {
-    font-family: unquote(map_get($font-family, $base-pc-font-family));
-    font-size: $base-pc-font-size;
-    font-weight: $base-pc-font-weight;
-    line-height: $base-pc-line-height;
-    letter-spacing: $base-pc-letter-spacing;
-    @include sp() {
-      @if ($base-pc-font-family != $base-sp-font-family) {
-        font-family: unquote(map_get($font-family, $base-sp-font-family));
-      }
-      @if ($base-pc-font-size != $base-sp-font-size) {
-        font-size: $base-sp-font-size;
-      }
-      @if ($base-pc-font-weight != $base-sp-font-weight) {
-        font-size: $base-sp-font-weight;
-      }
-      @if ($base-pc-line-height != $base-sp-line-height) {
-        font-size: $base-sp-line-height;
-      }
-      @if ($base-pc-letter-spacing != $base-sp-letter-spacing) {
-        font-size: $base-sp-letter-spacing;
-      }
-    }
-  } @else {
-
-    //設定対象のプロパティ
-    $target: map_get($font, $type);
-    $target-pc: if(map_has_key($target, pc), map_get($target, pc), null);
-    $target-sp: if(map_has_key($target, sp), map_get($target, sp), null);
-
-    @if (map_has_key($target-pc, font-family)) {
-      $target-pc-font-family: map_get($target-pc, font-family);
-      @if ($target-pc-font-family != $base-pc-font-family) {
-        font-family: unquote(map_get($font-family, map_get($target-pc, font-family)));
-      }
-    }
-    @if (map_has_key($target-pc, font-size)) {
-      $target-pc-font-size: map_get($target-pc, font-size);
-      @if ($target-pc-font-size != $base-pc-font-size) {
-        font-size: map_get($target-pc, font-size);
-      }
-    }
-    @if (map_has_key($target-pc, font-weight)) {
-      $target-pc-font-weight: map_get($target-pc, font-weight);
-      @if ($target-pc-font-weight != $base-pc-font-weight) {
-        font-weight: map_get($target-pc, font-weight);
-      }
-    }
-    @if (map_has_key($target-pc, line-height)) {
-      $target-pc-line-height: map_get($target-pc, line-height);
-      @if ($target-pc-line-height != $base-pc-line-height) {
-        line-height: map_get($target-pc, line-height);
-      }
-    }
-    @if (map_has_key($target-pc, letter-spacing)) {
-      $target-pc-letter-spacing: map_get($target-pc, letter-spacing);
-      @if ($target-pc-letter-spacing != $base-pc-letter-spacing) {
-        letter-spacing: map_get($target-pc, letter-spacing);
-      }
-    }
-
+  @if ($target-sp != null) {
     @if (map_has_key($target-sp, font-family)) {
       $target-sp-font-family: map_get($target-sp, font-family);
-      @if (
-              (map_has_key($target-pc, font-family) and $target-sp-font-family != map_get($target-pc, font-family)) or
-              (map_has_key($target-pc, font-family) != true and $target-sp-font-family != $base-sp-font-family)
-      ) {
-        @include sp() {
-          font-family: unquote(map_get($font-family, map_get($target-sp, font-family)));
-        }
+      @include sp() {
+        font-family: unquote(map_get($font-family, map_get($target-sp, font-family)));
       }
     }
     @if (map_has_key($target-sp, font-size)) {
       $target-sp-font-size: map_get($target-sp, font-size);
-      @if (
-              (map_has_key($target-pc, font-size) and $target-sp-font-size != map_get($target-pc, font-size)) or
-              (map_has_key($target-pc, font-size) != true and $target-sp-font-size != $base-sp-font-size)
-      ) {
-        @include sp() {
-          font-size: map_get($target-sp, font-size);
-        }
+      @include sp() {
+        font-size: map_get($target-sp, font-size);
       }
     }
     @if (map_has_key($target-sp, font-weight)) {
       $target-sp-font-weight: map_get($target-sp, font-weight);
-      @if (
-              (map_has_key($target-pc, font-weight) and $target-sp-font-weight != map_get($target-pc, font-weight)) or
-              (map_has_key($target-pc, font-weight) != true and $target-sp-font-weight != $base-sp-font-weight)
-      ) {
-        @include sp() {
-          font-weight: map_get($target-sp, font-weight);
-        }
+      @include sp() {
+        font-weight: map_get($target-sp, font-weight);
       }
     }
     @if (map_has_key($target-sp, line-height)) {
       $target-sp-line-height: map_get($target-sp, line-height);
-      @if (
-              (map_has_key($target-pc, line-height) and $target-sp-line-height != map_get($target-pc, line-height)) or
-              (map_has_key($target-pc, line-height) != true and $target-sp-line-height != $base-sp-line-height)
-      ) {
-        @include sp() {
-          line-height: map_get($target-sp, line-height);
-        }
+      @include sp() {
+        line-height: map_get($target-sp, line-height);
       }
     }
     @if (map_has_key($target-sp, letter-spacing)) {
       $target-sp-letter-spacing: map_get($target-sp, letter-spacing);
-      @if (
-              (map_has_key($target-pc, letter-spacing) and $target-sp-letter-spacing != map_get($target-pc, letter-spacing)) or
-              (map_has_key($target-pc, letter-spacing) != true and $target-sp-letter-spacing != $base-sp-letter-spacing)
-      ) {
-        @include sp() {
-          letter-spacing: map_get($target-sp, letter-spacing);
-        }
+      @include sp() {
+        letter-spacing: map_get($target-sp, letter-spacing);
       }
     }
   }

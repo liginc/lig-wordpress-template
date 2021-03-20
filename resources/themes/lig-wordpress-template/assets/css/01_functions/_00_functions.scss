@@ -18,3 +18,8 @@
 @function vh_sp($size,$height) {
   @return $size / $height * 100vh * 553/667;
 }
+
+// easing
+@function ease($type) {
+  @return if(map_has_key($easing, $type), map_get($easing, $type), null);
+}
