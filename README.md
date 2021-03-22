@@ -32,37 +32,231 @@ Source: https://necolas.github.io/normalize.css/
 
 --- 
 
-# Resources
-
-**SCSS** https://github.com/liginc/lig-wordpress-template/blob/master/resources/themes/lig-wordpress-template/assets/css/README.md
-
-**js** https://github.com/liginc/lig-wordpress-template/blob/master/resources/themes/lig-wordpress-template/assets/js/README.md
-
-# Theme
+# SCSS
 
 ## Structure
 
 ```
-├── archive.php
-├── footer.php
-├── header.php
-├── index.php
-├── license.txt
-├── page.php
-├── parts
-│   ├── article.php
-│   ├── breadcrumbs.php
-│   ├── button.php
-│   ├── footer-menu.php
-│   ├── footer.php
-│   ├── hamburger.php
-│   ├── header-menu.php
-│   ├── header.php
-│   ├── pagination.php
-│   ├── sns-menu.php
-│   ├── sns-share.php
-│   └── tag-list.php
-├── screenshot.png
-├── single.php
-└── style.css
+├── 00_constants
+│   ├── _00_break-point.scss
+│   ├── _01_color.scss
+│   ├── _02_easing.scss
+│   └── _03_font.scss
+├── 01_functions
+│   ├── _00_functions.scss
+│   ├── _01_mixins.scss
+│   └── _02_extends.scss
+├── 02_settings
+│   ├── _00_reset-extra.scss
+│   ├── _02_animation.scss
+│   └── _03_editor.scss
+├── 03_parts
+│   ├── _breadcrumbs.scss
+│   ├── _button.scss
+│   ├── _hamburger.scss
+│   ├── _pagination.scss
+│   ├── _sns-menu.scss
+│   ├── _sns-share.scss
+│   ├── footer
+│   │   ├── _footer-menu.scss
+│   │   └── _footer.scss
+│   └── header
+│       ├── _header-menu.scss
+│       └── _header.scss
+├── 04_pages
+│   ├── 00_global
+│   │   ├── _00_base.scss
+│   │   └── _01_layout.scss
+│   └── index
+│       └── _index.scss
+├── 99_utilities
+│   ├── _00_is-status.scss
+│   └── _02_utilities.scss
+└── app.scss
+
+```
+
+## BreakPoint 
+
+`00_constants/00_easing.scss` の連想配列`$break-point` に各イージングのパターンを定義する 
+
+呼び出しはfunction`bp($mode)` $modeにキーを渡す
+
+## MediaQuery
+
+### mixins
+`01_functions/01_mixins.scss` にMediaQuery用のmixinが定義されている
+
+#### mq($mode:break, $type: max)
+
+$modeに$break-pointのキー、$typeに`max`または`min`を指定する
+
+デフォルトの挙動は`max-width:767px`
+
+使用例：
+
+```scss
+// 768以下はフォントサイズを小さくする
+h1 {
+  font-size: 24px;
+  @include mq() {
+    font-size: 18px;
+  }
+}
+```
+
+#### mq_min($mode:break)
+mixin`mq()`の第二引数がデフォルトで`min`にセットされているショートハンド
+
+`mq_min(break)`と`mq(break,min)`は同じ
+
+#### min($mode:break)
+`mq_min()`のエイリアス
+
+#### mq_max($mode:break)
+mixin`mq()`の第二引数がデフォルトで`max`にセットされているショートハンド
+
+`mq_max(break)`と`mq(break,max)`は同じ
+
+#### max($mode:break)
+`mq_max()`のエイリアス
+
+#### mq_between($min-mode,$max-mode)
+`(min-width: px) and (max-width: px)`を出力する
+
+引数には$break-pointのキーを渡す
+
+#### between($min-mode,$max-mode)
+`mq_between()`のエイリアス
+
+#### pc($mode:break)
+引数を渡さない場合、`min-width:768px`を出力する
+
+#### sp($mode:break)
+引数を渡さない場合、`man-width:767px`を出力する
+
+使用例：
+
+```scss
+// 768のbreakpointで.wrapperのスタイルを変更する
+.wrapper {
+  // pc min-width:768px
+  @include pc() {
+    max-width: 80vw;
+    margin: 0 auto;
+  }
+  // sp max-width:767px
+  @include sp() {
+    padding: 0 20px;
+  }
+}
+
+// リキッドのカラムの数とmargin-rightを画面幅で変更する
+$margin:20px;
+.article-item {
+  margin-right: $margin;
+  
+  // 1440以上は4カラム min-width: 1440
+  @include min(pc) {
+    width: calc(( 100% - ($margin * 3 ) / 4 );
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+  
+  // 1024以上、1439以下は3カラム  min-width: 1024 and max-width: 1439
+  @include between(tab,pc) {
+    width: calc(( 100% - ($margin * 2 ) / 3 );
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+  
+  // 768以上、1023以下は2カラム  min-width: 768 and max-width: 1023
+  @include between(break,tab) {
+    width: calc(( 100% - ($margin * 1 ) / 2 );
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+  
+  // 767以下は1カラム max-width: 767
+  @include sp() {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+```
+
+## Fonts
+
+### Constants
+
+`00_constants/03_font.scss` の連想配列`$font` に各フォントのパターンを定義する 
+
+キー`sp` 内はmedia_queryでラップされたデータが出力される
+
+また、パターン`base` はHTML要素に適用される（`04_pages/00_global/00_base.scss`内）
+
+### mixin
+
+#### font($type:base)
+
+使用例：
+
+```scss
+.index__heading {
+  @include font(heading_01);
+}
+```
+
+## Sizes
+
+### mixins
+`01_functions/00_functions.scss` にfunctionが定義されている
+
+ベストビューデザインのピクセルから、vw・vhを算出するのに使用する
+
+#### vw($size, $mode:pc)
+デフォルトでは1440px幅時のvwを返す
+
+#### vw_sp($size,$mode:sp)
+デフォルトでは375px幅時のvwを返す
+
+#### vh($size,$height:$pc-bestview-height)
+デフォルトでは900px高時のvhを返す
+
+#### vh_sp($size,$height:$sp-bestview-height)
+デフォルトでは667px高時のvhを返す
+
+使用例：
+```scss
+// デザイン上、上下30px、左右60pxのpaddingを持つデザインを、同じ比率のまま画面幅に応じて可変させたい時
+.l-main {
+  padding: vh(30) vw(60);
+  @include sp() {
+    // レスポンシブ
+    padding: vh_sp(20) vw_sp(30);
+  }
+}
+```
+
+## Easing
+
+### Constants
+
+`00_constants/02_easing.scss` の連想配列`$easing` に各イージングのパターンを定義する 
+
+デフォルトでは https://easings.net/ja のパターンが用意されている
+
+### Function
+
+#### ease($type:$base-ease)
+
+使用例：
+```scss
+.index__heading {
+  transition: all .5s ease(easeInOutBack) 1s;
+}
 ```

@@ -7,7 +7,7 @@
   @return $size / bp($mode) * 100vw;
 }
 
-@function vh($size,$height) {
+@function vh($size,$height:$pc-bestview-height) {
   @return $size / $height * 100vh;
 }
 
@@ -15,11 +15,11 @@
   @return $size / bp(sp) * 100vw;
 }
 
-@function vh_sp($size,$height) {
+@function vh_sp($size,$height:$sp-bestview-height) {
   @return $size / $height * 100vh * 553/667;
 }
 
 // easing
-@function ease($type) {
+@function ease($type:$base-ease) {
   @return if(map_has_key($easing, $type), map_get($easing, $type), null);
 }
