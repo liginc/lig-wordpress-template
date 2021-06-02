@@ -1,4 +1,5 @@
 <?php
+extract(import_vars_whitelist(get_defined_vars()));
 $menu = [
     /**
      * template
@@ -47,19 +48,16 @@ $menu = [
     ],*/
 ];
 ?>
-<nav id="header-menu" class="header-menu">
+<nav id="header-menu" class="<?= get_modified_class('header-menu', $modifier) ?><?= get_additional_class($additional) ?>">
     <ul class="header-menu__list">
-        <?php foreach ($menu as $m): ?>
+        <?php foreach ($menu as $m) : ?>
             <li class="header-menu__item">
                 <a class="header-menu__link
                                 <?php if (array_key_exists('modifier', $m)) echo get_modified_class('header-menu__link', $m['modifier']) ?>
-                                <?php if (array_key_exists('is-current', $m)) echo is_current($m['is-current']) ?>"
-                   href="<?= $m['href'] ?>"
-                    <?php if (array_key_exists('is-blank', $m)) echo is_blank($m['is-blank']) ?>
-                >
-                                    <span class="header-menu__text">
-                                        <?= $m['text'] ?>
-                                    </span>
+                                <?php if (array_key_exists('is-current', $m)) echo is_current($m['is-current']) ?>" href="<?= $m['href'] ?>" <?php if (array_key_exists('is-blank', $m)) echo is_blank($m['is-blank']) ?>>
+                    <span class="header-menu__text">
+                        <?= $m['text'] ?>
+                    </span>
                 </a>
             </li>
         <?php endforeach; ?>

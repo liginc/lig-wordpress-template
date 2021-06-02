@@ -23,3 +23,8 @@
 @function ease($type:$base-ease) {
   @return if(map_has_key($easing, $type), map_get($easing, $type), null);
 }
+
+// color
+@function color($type,$brightness:base) {
+  @return if(map_has_key($color, $type) and map_has_key(map_get($color, $type), $brightness), map_get(map_get($color, $type), $brightness), null);
+}

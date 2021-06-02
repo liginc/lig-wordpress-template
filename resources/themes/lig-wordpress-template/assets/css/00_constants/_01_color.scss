@@ -1,8 +1,12 @@
 //colors
-$white: #ffffff;
-$black: #000000;
-
-$gray: #666666;
-$gray-light: #cccccc;
-
-$red: #ff0000;
+$color: (
+    white: (
+        base: rgba(255,255,255,1),
+    ),
+    black: (
+        base: rgba(0,0,0,1),
+    ),
+    gray: (
+        base: rgba(128,128,128,1),
+    )
+);

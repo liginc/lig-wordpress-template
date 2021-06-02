@@ -38,40 +38,43 @@ Source: https://necolas.github.io/normalize.css/
 
 ```
 ├── 00_constants
-│   ├── _00_break-point.scss
-│   ├── _01_color.scss
-│   ├── _02_easing.scss
-│   └── _03_font.scss
+│   ├── _00_break-point.scss // ブレークポイントを定義
+│   ├── _01_color.scss // 色を定義
+│   ├── _02_easing.scss // イージングを定義
+│   └── _03_font.scss // フォントを定義
 ├── 01_functions
-│   ├── _00_functions.scss
-│   ├── _01_mixins.scss
-│   └── _02_extends.scss
+│   ├── _00_functions.scss // funtionを定義
+│   ├── _01_mixins.scss // mixinを定義
+│   └── _02_extends.scss // extendを定義
 ├── 02_settings
-│   ├── _00_reset-extra.scss
-│   ├── _02_animation.scss
-│   └── _03_editor.scss
+│   ├── _00_reset-extra.scss // sanitize.cssとreset.cssで解消できない問題をリセット
+│   └── _02_keyframes.scss // キーフレームを定義
 ├── 03_parts
-│   ├── _breadcrumbs.scss
-│   ├── _button.scss
-│   ├── _hamburger.scss
-│   ├── _pagination.scss
-│   ├── _sns-menu.scss
-│   ├── _sns-share.scss
-│   ├── footer
-│   │   ├── _footer-menu.scss
-│   │   └── _footer.scss
-│   └── header
-│       ├── _header-menu.scss
-│       └── _header.scss
+│   ├── _breadcrumbs.scss
+│   ├── _button.scss
+│   ├── _hamburger.scss
+│   ├── _pagination.scss
+│   ├── _sns-menu.scss
+│   ├── _sns-share.scss
+│   ├── _tag-list.scss
+│   ├── footer
+│   │   ├── _footer-menu.scss
+│   │   └── _footer.scss
+│   └── header
+│       ├── _header-menu.scss
+│       └── _header.scss
 ├── 04_pages
-│   ├── 00_global
-│   │   ├── _00_base.scss
-│   │   └── _01_layout.scss
-│   └── index
-│       └── _index.scss
+│   ├── 00_global
+│   │   ├── _00_base.scss
+│   │   ├── _01_form.scss
+│   │   └── _03_editor.scss // Goutenbergで出力されるタグのスタイリング
+│   └── index
+│       └── _index.scss
 ├── 99_utilities
-│   ├── _00_is-status.scss
-│   └── _02_utilities.scss
+│   ├── _00_class.scss
+│   ├── _01_is-status.scss
+│   ├── _02_utilities.scss
+│   └── _03_font.scss
 └── app.scss
 
 ```

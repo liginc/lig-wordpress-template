@@ -1,31 +1,37 @@
 <?php
+
 /**
  * 'tags' => array,
  * 'link' => bool,
- * 'modifier' => string,
  */
-if (empty($tags)) return;
-$link = (empty($link)) ? null : $link;
-$modifier = (empty($modifier)) ? "" : $modifier;
+$default_vars = [
+    'tags' => [],
+    'link' => false,
+];
+extract(import_vars_whitelist(get_defined_vars(), $default_vars));
+
+if (!count($tags)) return;
 ?>
-<div class="<?= get_modified_class('tag-list', $modifier) ?>">
+<div class="<?= get_modified_class('tag-list', $modifier) ?><?= get_additional_class($additional) ?>">
     <ul class="tag-list__list">
         <?php
-        foreach ($tags as $tag):
-            ?>
+        foreach ($tags as $tag) :
+        ?>
             <li class="tag-list__item">
                 <?php
                 if (!empty($link)) :
-                    ?>
+                ?>
                     <a class="tag-list__link" href="<?= get_term_link($tag) ?>">
-                        <?= $tag->name ?>
+                        <span class="tag-list__text">
+                            <?= $tag->name ?>
+                        </span>
                     </a>
                 <?php
-                else:
-                    ?>
-                    <spana class="tag-list__text">
+                else :
+                ?>
+                    <span class="tag-list__text">
                         <?= $tag->name ?>
-                    </spana>
+                    </span>
                 <?php
                 endif;
                 ?>

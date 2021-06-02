@@ -1,10 +1,10 @@
-.is-only-pc-show {
+.is-pc-show {
   @include sp() {
     display: none;
   }
 }
 
-.is-only-sp-show {
+.is-sp-show {
   @include pc() {
     display: none;
   }
