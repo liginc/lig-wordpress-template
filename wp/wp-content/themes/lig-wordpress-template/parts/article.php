@@ -20,7 +20,7 @@ $date = get_the_date('Y.m.d', $post);
 $href = get_permalink($post);
 $excerpt = mb_substr(trim(strip_tags($post->post_content)), 0, 200);
 
-if ($cat) {
+if ($taxonomy) {
     $cat = get_first_term($post->ID, $taxonomy);
 }
 if ($tag_taxonomy) {
@@ -36,15 +36,15 @@ if ($tag_taxonomy) {
             </h2>
             <time class="article__time" datetime="<?= $datetime ?>"><?= $date ?></time>
             <?php
-            if ($cat) :
+            if (!empty($cat)) :
             ?>
-                <span class="article__term utl-term"><?= $cat->name ?></span>
+                <span class="article__term article__term--<?= $taxonomy ?> article__term--<?= $cat->slug ?>"><?= $cat->name ?></span>
             <?php
             endif;
             ?>
             <?php
-            if ($tags) :
-                import_part('tag-list', ['tags' => $tags, 'modifier' => $tag_taxonomy]);
+            if (!empty($tags)) :
+                import_part('tag-list', ['tags' => $tags, 'modifier' => [$tag_taxonomy]]);
             endif;
             ?>
             <p class="article__excerpt">
