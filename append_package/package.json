@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "import-glob-loader": "^1.1.0",
+    "reset-css": "^5.0.1",
+    "sanitize.css": "^12.0.1",
+    "smoothscroll-polyfill": "^0.4.4",
+    "viewport-extra": "^2.0.1"
+  }
+}
