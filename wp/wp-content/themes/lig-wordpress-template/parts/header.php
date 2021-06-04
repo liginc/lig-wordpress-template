@@ -8,7 +8,7 @@ $title_tag = is_front_page() ? 'h1' : 'span';
         <<?= $title_tag ?> class="header__title">
             <a class="header__title-link" href="<?= URL_HOME ?>">
                 <span class="header__title-logo">
-                    <?= get_svg_img('logo', ['alt' => NAME_SITE]) ?>
+                    <?= get_svg_img('logo', ['base64' => true, 'alt' => NAME_SITE]) ?>
                 </span>
             </a>
         </<?= $title_tag ?>>
