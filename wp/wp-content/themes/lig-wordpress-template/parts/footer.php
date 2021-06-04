@@ -1,13 +1,6 @@
 <?php
 extract(import_vars_whitelist(get_defined_vars()));
 ?>
-<div id="scroll-top" class="scroll-top">
-    <a class="scroll-top__link" href="#body">
-        <div class="scroll-top__svg">
-            <?= get_svg_sprite('icon-angle') ?>
-        </div>
-    </a>
-</div>
 <footer id="footer" class="<?= get_modified_class('footer', $modifier) ?><?= get_additional_class($additional) ?>">
     <div class="footer__main">
         <div class="footer__logo">
