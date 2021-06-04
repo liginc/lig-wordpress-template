@@ -1,13 +1,9 @@
-// vewport-extraを有効にする場合はコメントアウト消してね
+// vewport-extraを有効にする場合はコメントアウトを削除
 // import './module/viewport'
 
 import Menu from './module/menu'
-import SmoothScroll from './module/smooth-scroll'
 
 window.addEventListener('load', function () {
-
-    //smooth scroll
-    new SmoothScroll().clickEvent()
 
     //menu
     new Menu()
