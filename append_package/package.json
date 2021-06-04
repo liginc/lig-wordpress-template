@@ -1,10 +1,9 @@
 {
-  "dependencies": {
-    "reset-css": "^5.0.1",
-    "sanitize.css": "^12.0.1",
-    "viewport-extra": "^2.0.1"
-  },
   "devDependencies": {
     "import-glob-loader": "^1.1.0"
+  },
+  "dependencies": {
+    "reset-css": "^5.0.1",
+    "sanitize.css": "^12.0.1"
   }
 }
