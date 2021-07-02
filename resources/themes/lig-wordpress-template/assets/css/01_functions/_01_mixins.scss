@@ -1,3 +1,17 @@
+//three point leader
+@mixin line-clamp($num, $num-sp: null) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $num;
+  overflow: hidden;
+
+  @if $num-sp {
+    @include mq {
+      -webkit-line-clamp: $num-sp;
+    }
+  }
+}
+
 // media query
 @mixin mq($mode:break, $type: max) {
   $width: bp($mode);

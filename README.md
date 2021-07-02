@@ -263,3 +263,16 @@ $margin:20px;
   transition: all .5s ease(easeInOutBack) 1s;
 }
 ```
+
+## Utility
+
+### Lineclamp
+
+記事などのタイトル、本文が長い時に省略させるために使用する。
+
+使用例：
+```scss
+.index__article {
+  @include line-clamp(3);
+}
+```
