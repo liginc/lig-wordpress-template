@@ -9,5 +9,4 @@
     <?php wp_head(); ?>
 </head>
 <body id="body" <?php body_class(); ?>>
-<?= file_get_contents(PATH_SVG_SPRITE); ?>
 <?php import_part('header') ?>

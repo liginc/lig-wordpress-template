@@ -1,12 +1,3 @@
 html {
   @include font();
 }
-
-[data-svg-sprite] {
-  display: none;
-}
-
-.svg-sprite {
-  width: 100%;
-  height: 100%;
-}
