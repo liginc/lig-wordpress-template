@@ -1,4 +1,6 @@
 {
+  "devDependencies": {
+  },
   "dependencies": {
     "reset-css": "^5.0.1",
     "sanitize.css": "^12.0.1"
