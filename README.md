@@ -276,3 +276,19 @@ $margin:20px;
   @include line-clamp(3);
 }
 ```
+
+### Hover
+
+hover可能な端末に絞ったhoverイベントを指定させるために使用する。
+
+使用例：
+```scss
+.hoge {
+  opacity: 0;
+  transition: opacity 1s;
+
+  @include hover(){
+    opacity: 1;
+  };
+}
+```
